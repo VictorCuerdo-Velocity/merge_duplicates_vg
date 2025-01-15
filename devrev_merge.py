@@ -51,8 +51,8 @@ class Contact:
     @classmethod
     def from_dict(cls, data: Dict) -> 'Contact':
         """Create a Contact instance from a dictionary with validation"""
-        required_fields = {'REV_USER_ID', 'DISPLAY_NAME', 'EMAIL', 'EXTERNAL_REF', 
-                         'FULL_NAME', 'TICKET_COUNT', 'CREATED_AT', 'UPDATED_AT'}
+        required_fields = {'REV_USER_ID', 'DISPLAY_NAME', 'EMAIL', 'EXTERNAL_REF',
+                           'FULL_NAME', 'TICKET_COUNT', 'CREATED_AT', 'UPDATED_AT'}
         missing_fields = required_fields - set(data.keys())
         if missing_fields:
             raise ValueError(f"Missing required fields: {missing_fields}")
@@ -96,8 +96,8 @@ class DevRevAPI:
 
     @sleep_and_retry
     @limits(calls=45, period=60)  # Conservative rate limit
-    def make_request(self, method: str, endpoint: str, data: Optional[Dict] = None, 
-                    retry_count: int = 0) -> requests.Response:
+    def make_request(self, method: str, endpoint: str, data: Optional[Dict] = None,
+                     retry_count: int = 0) -> requests.Response:
         """Make a rate-limited API request with retries"""
         url = f"{self.base_url}{endpoint}"
         
@@ -166,6 +166,45 @@ class DevRevAPI:
             logger.error(f"Failed to update external_ref: {str(e)}")
             return False
 
+    def backup_contact_data(self, contact: Contact) -> bool:
+        """Back up all contact data including tickets and conversations"""
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        backup_dir = Path(f"backups/{contact.email}_{timestamp}")
+        backup_dir.mkdir(parents=True, exist_ok=True)
+
+        try:
+            # Get all tickets for this contact
+            endpoint = "/works.list"
+            payload = {
+                "type": ["ticket", "issue"],
+                "owned_by": [contact.rev_user_id]
+            }
+            tickets_response = self.make_request("POST", endpoint, payload).json()
+
+            # Save tickets data
+            with open(backup_dir / "tickets.json", 'w', encoding='utf-8') as f:
+                json.dump(tickets_response, f, indent=2)
+
+            # For each ticket, get conversations
+            for ticket in tickets_response.get('works', []):
+                ticket_id = ticket['id']
+                conv_endpoint = "/conversations.list"
+                conv_payload = {
+                    "work": ticket_id
+                }
+                conv_response = self.make_request("POST", conv_endpoint, conv_payload).json()
+                
+                # Save conversations data
+                with open(backup_dir / f"conversations_{ticket_id}.json", 'w', encoding='utf-8') as f:
+                    json.dump(conv_response, f, indent=2)
+
+            logger.info(f"✓ Backed up data for contact {contact.email} to {backup_dir}")
+            return True
+
+        except Exception as e:
+            logger.error(f"Failed to backup contact data for {contact.email}: {str(e)}")
+            return False
+
 class SavePoint:
     """Class to manage merge operation savepoints"""
     def __init__(self, path: str = "savepoint.json"):
@@ -187,7 +226,7 @@ class SavePoint:
     def save(self) -> None:
         """Save current state to savepoint file"""
         try:
-            with open(self.path, 'w') as f:
+            with open(self.path, 'w', encoding='utf-8') as f:
                 json.dump({
                     "processed_pairs": [list(p) for p in self.processed_pairs],
                     "last_updated": datetime.now().isoformat()
@@ -248,12 +287,48 @@ class ContactMerger:
 
         return duplicates
 
+    def verify_backup_integrity(self, primary: Contact, duplicate: Contact) -> bool:
+        """Verify backup data matches actual ticket counts"""
+        backup_dir = Path("backups")
+        try:
+            # Identify the latest backup for the primary contact
+            primary_backups = list(backup_dir.glob(f"{primary.email}_*"))
+            if not primary_backups:
+                logger.error("No backup found for primary contact")
+                return False
+            latest_primary = max(primary_backups, key=lambda p: p.stat().st_mtime)
+
+            # Identify the latest backup for the duplicate contact
+            duplicate_backups = list(backup_dir.glob(f"{duplicate.email}_*"))
+            if not duplicate_backups:
+                logger.error("No backup found for duplicate contact")
+                return False
+            latest_duplicate = max(duplicate_backups, key=lambda p: p.stat().st_mtime)
+
+            # Check primary contact tickets
+            with open(latest_primary / "tickets.json", encoding='utf-8') as f:
+                primary_tickets = json.load(f)
+                if len(primary_tickets.get('works', [])) != primary.ticket_count:
+                    logger.error(f"Primary contact ticket count mismatch! Expected {primary.ticket_count} but found {len(primary_tickets.get('works', []))}")
+                    return False
+
+            # Check duplicate contact tickets
+            with open(latest_duplicate / "tickets.json", encoding='utf-8') as f:
+                duplicate_tickets = json.load(f)
+                if len(duplicate_tickets.get('works', [])) != duplicate.ticket_count:
+                    logger.error(f"Duplicate contact ticket count mismatch! Expected {duplicate.ticket_count} but found {len(duplicate_tickets.get('works', []))}")
+                    return False
+
+            logger.info("Backup integrity verification passed.")
+            return True
+
+        except Exception as e:
+            logger.error(f"Backup verification failed: {str(e)}")
+            return False
+
     def merge_contacts(self, primary: Contact, duplicate: Contact) -> bool:
         """
-        Merge duplicate contact into primary contact:
-        1. Perform merge operation
-        2. Verify merge was successful
-        3. Update primary's external_ref to the user_ format
+        Merge duplicate contact into primary contact with safety checks.
         """
         try:
             logger.info(f"\nMerging contacts for email {primary.email}")
@@ -262,20 +337,32 @@ class ContactMerger:
 
             if self.preview_mode:
                 logger.info("PREVIEW MODE - Would make these changes:")
-                logger.info(f"1. Merge {duplicate.rev_user_id} into {primary.rev_user_id}")
-                logger.info(f"2. Update primary contact's external_ref to: {duplicate.external_ref}")
+                logger.info("1. Backup all data for both contacts")
+                logger.info(f"2. Merge {duplicate.rev_user_id} into {primary.rev_user_id}")
+                logger.info(f"3. Update primary contact's external_ref to: {duplicate.external_ref}")
                 return True
 
-            # Step 1: Merge contacts
+            # Step 1: Backup both contacts' data
+            logger.info("Backing up contact data...")
+            if not self.api.backup_contact_data(primary):
+                raise Exception("Failed to backup primary contact data - aborting merge")
+            if not self.api.backup_contact_data(duplicate):
+                raise Exception("Failed to backup duplicate contact data - aborting merge")
+
+            # Step 2: Verify ticket counts match backup
+            if not self.verify_backup_integrity(primary, duplicate):
+                raise Exception("Backup verification failed - aborting merge")
+
+            # Step 3: Merge contacts via API
             if not self.api.merge_contacts(primary.rev_user_id, duplicate.rev_user_id):
                 raise Exception("Failed to merge contacts")
 
-            # Step 2: Verify merge
-            time.sleep(1)  # Small delay to ensure merge is processed
+            # Small delay to ensure merge is processed
+            time.sleep(1)
             if not self.api.verify_merge(duplicate.rev_user_id):
                 raise Exception("Merge verification failed")
 
-            # Step 3: Update external_ref
+            # Step 4: Update primary's external_ref
             if not self.api.update_external_ref(primary.rev_user_id, duplicate.external_ref):
                 raise Exception("Failed to update external_ref")
             
@@ -341,7 +428,7 @@ class ContactMerger:
         }
 
         report_path = report_dir / f"merge_report_{timestamp}.json"
-        with open(report_path, 'w') as f:
+        with open(report_path, 'w', encoding='utf-8') as f:
             json.dump(report, f, indent=2)
         logger.info(f"Generated report: {report_path}")
 
@@ -398,7 +485,7 @@ def main():
             return
 
         # Create required directories
-        for directory in ['logs', 'reports']:
+        for directory in ['logs', 'reports', 'backups']:
             Path(directory).mkdir(exist_ok=True)
 
         # Initialize API and merger
