@@ -13,6 +13,10 @@ from dotenv import load_dotenv
 from ratelimit import limits, sleep_and_retry
 from dataclasses import dataclass
 from pathlib import Path
+from jinja2 import Environment, FileSystemLoader
+
+# Global variable to store the current log file's path
+LOG_FILE_PATH = None
 
 # Load environment variables
 load_dotenv()
@@ -20,15 +24,18 @@ load_dotenv()
 # Configure logging
 def setup_logging():
     """Configure logging with both file and console output"""
+    global LOG_FILE_PATH
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     log_dir = Path("logs")
     log_dir.mkdir(exist_ok=True)
+    logfile = log_dir / f"contact_merge_{timestamp}.log"
+    LOG_FILE_PATH = logfile
 
     logging.basicConfig(
         level=logging.INFO,
         format="%(asctime)s - %(levelname)s - %(message)s",
         handlers=[
-            logging.FileHandler(log_dir / f"contact_merge_{timestamp}.log"),
+            logging.FileHandler(logfile),
             logging.StreamHandler(),
         ],
     )
@@ -409,6 +416,78 @@ class ContactMerger:
             logger.error(f"✗ Failed to merge contacts: {str(e)}")
             return False
 
+    def generate_html_report(self) -> None:
+        """Generate an HTML report of the merge operations"""
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        report_dir = Path("reports")
+        report_dir.mkdir(exist_ok=True)
+
+        # Create the Jinja2 environment and load the template
+        env = Environment(loader=FileSystemLoader('templates'))
+        template = env.get_template('report_template.html')
+
+        # Read the log file contents (if available)
+        log_content = ""
+        if LOG_FILE_PATH and LOG_FILE_PATH.exists():
+            try:
+                with open(LOG_FILE_PATH, "r", encoding="utf-8") as f:
+                    log_content = f.read()
+            except Exception as e:
+                logger.error(f"Failed to read log file: {e}")
+
+        # Prepare the data for the template
+        report_data = {
+            "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "summary": {
+                "total_merges_attempted": len(self.merged_pairs) + len(self.failed_merges),
+                "successful_merges": len(self.merged_pairs),
+                "failed_merges": len(self.failed_merges),
+            },
+            "successful_merges": [
+                {
+                    "primary": {
+                        "display_name": primary.display_name,
+                        "email": primary.email,
+                        "original_external_ref": primary.external_ref,
+                        "original_ticket_count": primary.ticket_count,
+                        "final_ticket_count": primary.ticket_count + duplicate.ticket_count,
+                    },
+                    "duplicate": {
+                        "display_name": duplicate.display_name,
+                        "email": duplicate.email,
+                        "external_ref": duplicate.external_ref,
+                        "ticket_count": duplicate.ticket_count,
+                    },
+                }
+                for primary, duplicate in self.merged_pairs
+            ],
+            "failed_merges": [
+                {
+                    "primary": {
+                        "display_name": primary.display_name,
+                        "email": primary.email,
+                    },
+                    "duplicate": {
+                        "display_name": duplicate.display_name,
+                        "email": duplicate.email,
+                    },
+                    "error": error,
+                }
+                for primary, duplicate, error in self.failed_merges
+            ],
+            "log_content": log_content,
+        }
+
+        # Render the HTML content using the template
+        html_content = template.render(**report_data)
+
+        # Save the HTML file in the reports directory
+        report_path = report_dir / f"merge_report_{timestamp}.html"
+        with open(report_path, "w", encoding="utf-8") as f:
+            f.write(html_content)
+
+        logger.info(f"Generated HTML report: {report_path}")
+
     def generate_report(self) -> None:
         """Generate a detailed report of the merge operations"""
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -463,7 +542,10 @@ class ContactMerger:
         report_path = report_dir / f"merge_report_{timestamp}.json"
         with open(report_path, "w", encoding="utf-8") as f:
             json.dump(report, f, indent=2)
-        logger.info(f"Generated report: {report_path}")
+        logger.info(f"Generated JSON report: {report_path}")
+
+        # Generate the HTML report as well
+        self.generate_html_report()
 
     def process_csv(self, csv_path: str, preview: bool = False) -> None:
         """Process the CSV file and merge duplicate contacts"""
@@ -543,6 +625,8 @@ def main():
                 logger.info("\nFailed merges:")
                 for primary, duplicate, error in merger.failed_merges:
                     logger.info(f"- {primary.email}: {error}")
+
+        logger.info("Both JSON and HTML reports have been generated in the 'reports' directory.")
 
     except Exception as e:
         logger.error(f"An error occurred: {str(e)}")
