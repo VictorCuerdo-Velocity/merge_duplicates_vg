@@ -23,14 +23,14 @@ def setup_logging():
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     log_dir = Path("logs")
     log_dir.mkdir(exist_ok=True)
-    
+
     logging.basicConfig(
         level=logging.INFO,
         format="%(asctime)s - %(levelname)s - %(message)s",
         handlers=[
-            logging.FileHandler(log_dir / f'contact_merge_{timestamp}.log'),
-            logging.StreamHandler()
-        ]
+            logging.FileHandler(log_dir / f"contact_merge_{timestamp}.log"),
+            logging.StreamHandler(),
+        ],
     )
     return logging.getLogger(__name__)
 
@@ -39,6 +39,7 @@ logger = setup_logging()
 @dataclass
 class Contact:
     """Data class to represent a contact with validation"""
+
     rev_user_id: str
     display_name: str
     email: str
@@ -49,46 +50,58 @@ class Contact:
     updated_at: str
 
     @classmethod
-    def from_dict(cls, data: Dict) -> 'Contact':
+    def from_dict(cls, data: Dict) -> "Contact":
         """Create a Contact instance from a dictionary with validation"""
-        required_fields = {'REV_USER_ID', 'DISPLAY_NAME', 'EMAIL', 'EXTERNAL_REF',
-                           'FULL_NAME', 'TICKET_COUNT', 'CREATED_AT', 'UPDATED_AT'}
+        required_fields = {
+            "REV_USER_ID",
+            "DISPLAY_NAME",
+            "EMAIL",
+            "EXTERNAL_REF",
+            "FULL_NAME",
+            "TICKET_COUNT",
+            "CREATED_AT",
+            "UPDATED_AT",
+        }
         missing_fields = required_fields - set(data.keys())
         if missing_fields:
             raise ValueError(f"Missing required fields: {missing_fields}")
-        
+
         return cls(
-            rev_user_id=str(data['REV_USER_ID']),
-            display_name=str(data['DISPLAY_NAME']),
-            email=str(data['EMAIL']),
-            external_ref=str(data['EXTERNAL_REF']),
-            full_name=str(data['FULL_NAME']),
-            ticket_count=int(data.get('TICKET_COUNT', 0)),
-            created_at=str(data['CREATED_AT']),
-            updated_at=str(data['UPDATED_AT'])
+            rev_user_id=str(data["REV_USER_ID"]),
+            display_name=str(data["DISPLAY_NAME"]),
+            email=str(data["EMAIL"]),
+            external_ref=str(data["EXTERNAL_REF"]),
+            full_name=str(data["FULL_NAME"]),
+            ticket_count=int(data.get("TICKET_COUNT", 0)),
+            created_at=str(data["CREATED_AT"]),
+            updated_at=str(data["UPDATED_AT"]),
         )
 
     def is_revu_contact(self) -> bool:
         """Check if this is a REVU- format contact"""
-        return self.external_ref and self.external_ref.startswith('REVU-')
+        return self.external_ref and self.external_ref.startswith("REVU-")
 
     def is_user_contact(self) -> bool:
         """Check if this is a user_ format contact"""
-        return self.external_ref and self.external_ref.startswith('user_')
+        return self.external_ref and self.external_ref.startswith("user_")
+
 
 class RetryableError(Exception):
     """Exception class for errors that should trigger a retry"""
     pass
 
+
 class DevRevAPI:
     def __init__(self, api_token: str, base_url: str = "https://api.devrev.ai"):
         self.base_url = base_url.rstrip("/")
         self.session = requests.Session()
-        self.session.headers.update({
-            "Authorization": f"Bearer {api_token}",
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        })
+        self.session.headers.update(
+            {
+                "Authorization": f"Bearer {api_token}",
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+            }
+        )
         self.max_retries = 3
         self.retry_delay = 2  # seconds
         self.rate_limit_calls = 45
@@ -96,23 +109,28 @@ class DevRevAPI:
 
     @sleep_and_retry
     @limits(calls=45, period=60)  # Conservative rate limit
-    def make_request(self, method: str, endpoint: str, data: Optional[Dict] = None,
-                     retry_count: int = 0) -> requests.Response:
+    def make_request(
+        self,
+        method: str,
+        endpoint: str,
+        data: Optional[Dict] = None,
+        retry_count: int = 0,
+    ) -> requests.Response:
         """Make a rate-limited API request with retries"""
         url = f"{self.base_url}{endpoint}"
-        
+
         try:
             response = self.session.request(method, url, json=data)
-            
+
             if response.status_code in (429, 500, 502, 503, 504):
                 raise RetryableError(f"Retryable status code: {response.status_code}")
-                
+
             response.raise_for_status()
             return response
 
         except (RetryableError, requests.exceptions.RequestException) as e:
             if retry_count < self.max_retries:
-                sleep_time = self.retry_delay * (2 ** retry_count)  # Exponential backoff
+                sleep_time = self.retry_delay * (2**retry_count)  # Exponential backoff
                 logger.warning(f"Request failed, retrying in {sleep_time}s: {str(e)}")
                 time.sleep(sleep_time)
                 return self.make_request(method, endpoint, data, retry_count + 1)
@@ -121,11 +139,8 @@ class DevRevAPI:
     def merge_contacts(self, primary_id: str, secondary_id: str) -> bool:
         """Merge two contacts using the DevRev merge endpoint"""
         endpoint = "/api/gateway/internal/rev-users.merge"
-        payload = {
-            "primary_user": primary_id,
-            "secondary_user": secondary_id
-        }
-        
+        payload = {"primary_user": primary_id, "secondary_user": secondary_id}
+
         try:
             self.make_request("POST", endpoint, payload)
             logger.info(f"Successfully merged {secondary_id} into {primary_id}")
@@ -154,10 +169,10 @@ class DevRevAPI:
             "external_ref": external_ref,
             "custom_schema_spec": {
                 "tenant_fragment": True,
-                "validate_required_fields": True
-            }
+                "validate_required_fields": True,
+            },
         }
-        
+
         try:
             self.make_request("POST", endpoint, payload)
             logger.info(f"Successfully updated external_ref for {contact_id}")
@@ -175,27 +190,26 @@ class DevRevAPI:
         try:
             # Get all tickets for this contact
             endpoint = "/works.list"
-            payload = {
-                "type": ["ticket", "issue"],
-                "owned_by": [contact.rev_user_id]
-            }
+            payload = {"type": ["ticket", "issue"], "owned_by": [contact.rev_user_id]}
             tickets_response = self.make_request("POST", endpoint, payload).json()
 
             # Save tickets data
-            with open(backup_dir / "tickets.json", 'w', encoding='utf-8') as f:
+            with open(backup_dir / "tickets.json", "w", encoding="utf-8") as f:
                 json.dump(tickets_response, f, indent=2)
 
             # For each ticket, get conversations
-            for ticket in tickets_response.get('works', []):
-                ticket_id = ticket['id']
+            for ticket in tickets_response.get("works", []):
+                ticket_id = ticket["id"]
                 conv_endpoint = "/conversations.list"
-                conv_payload = {
-                    "work": ticket_id
-                }
+                conv_payload = {"work": ticket_id}
                 conv_response = self.make_request("POST", conv_endpoint, conv_payload).json()
-                
+
                 # Save conversations data
-                with open(backup_dir / f"conversations_{ticket_id}.json", 'w', encoding='utf-8') as f:
+                with open(
+                    backup_dir / f"conversations_{ticket_id}.json",
+                    "w",
+                    encoding="utf-8",
+                ) as f:
                     json.dump(conv_response, f, indent=2)
 
             logger.info(f"✓ Backed up data for contact {contact.email} to {backup_dir}")
@@ -205,8 +219,10 @@ class DevRevAPI:
             logger.error(f"Failed to backup contact data for {contact.email}: {str(e)}")
             return False
 
+
 class SavePoint:
     """Class to manage merge operation savepoints"""
+
     def __init__(self, path: str = "savepoint.json"):
         self.path = Path(path)
         self.processed_pairs: Set[Tuple[str, str]] = set()
@@ -226,11 +242,15 @@ class SavePoint:
     def save(self) -> None:
         """Save current state to savepoint file"""
         try:
-            with open(self.path, 'w', encoding='utf-8') as f:
-                json.dump({
-                    "processed_pairs": [list(p) for p in self.processed_pairs],
-                    "last_updated": datetime.now().isoformat()
-                }, f, indent=2)
+            with open(self.path, "w", encoding="utf-8") as f:
+                json.dump(
+                    {
+                        "processed_pairs": [list(p) for p in self.processed_pairs],
+                        "last_updated": datetime.now().isoformat(),
+                    },
+                    f,
+                    indent=2,
+                )
         except Exception as e:
             logger.error(f"Error saving savepoint: {e}")
 
@@ -242,6 +262,7 @@ class SavePoint:
     def is_processed(self, primary_id: str, duplicate_id: str) -> bool:
         """Check if a pair has already been processed"""
         return (primary_id, duplicate_id) in self.processed_pairs
+
 
 class ContactMerger:
     def __init__(self, api: DevRevAPI):
@@ -255,35 +276,43 @@ class ContactMerger:
         """
         Identify valid duplicate pairs based on our specific criteria:
         - Same email
-        - One has REVU- external_ref
-        - One has user_ external_ref
+        - One contact has a REVU- external_ref
+        - One contact has a user_ external_ref
         """
         contact_groups: Dict[str, List[Contact]] = {}
-        
+
         # Group contacts by email
         for contact in contacts:
             key = contact.email.lower()
             contact_groups.setdefault(key, []).append(contact)
 
+        # Debug: Log email groups (optional)
+        for email, group in contact_groups.items():
+            logger.info(f"Email: {email} has {len(group)} record(s)")
+
         duplicates = []
         for email, group in contact_groups.items():
+            # Only process if there are duplicates
             if len(group) < 2:
                 continue
 
-            # Find REVU contact and user_ contact
             revu_contact = None
             user_contact = None
-            
+
             for contact in group:
                 if contact.is_revu_contact():
                     revu_contact = contact
                 elif contact.is_user_contact():
                     user_contact = contact
 
-            # Only consider pairs with exactly one REVU and one user_ contact
             if revu_contact and user_contact:
                 if not self.savepoint.is_processed(revu_contact.rev_user_id, user_contact.rev_user_id):
                     duplicates.append((revu_contact, user_contact))
+            else:
+                # This group does not contain both types of external references.
+                # Log detailed information including all external_ref values.
+                external_refs = [contact.external_ref for contact in group]
+                logger.info(f"Skipped duplicate group for email '{email}'. External references: {external_refs}")
 
         return duplicates
 
@@ -306,17 +335,21 @@ class ContactMerger:
             latest_duplicate = max(duplicate_backups, key=lambda p: p.stat().st_mtime)
 
             # Check primary contact tickets
-            with open(latest_primary / "tickets.json", encoding='utf-8') as f:
+            with open(latest_primary / "tickets.json", encoding="utf-8") as f:
                 primary_tickets = json.load(f)
-                if len(primary_tickets.get('works', [])) != primary.ticket_count:
-                    logger.error(f"Primary contact ticket count mismatch! Expected {primary.ticket_count} but found {len(primary_tickets.get('works', []))}")
+                if len(primary_tickets.get("works", [])) != primary.ticket_count:
+                    logger.error(
+                        f"Primary contact ticket count mismatch! Expected {primary.ticket_count} but found {len(primary_tickets.get('works', []))}"
+                    )
                     return False
 
             # Check duplicate contact tickets
-            with open(latest_duplicate / "tickets.json", encoding='utf-8') as f:
+            with open(latest_duplicate / "tickets.json", encoding="utf-8") as f:
                 duplicate_tickets = json.load(f)
-                if len(duplicate_tickets.get('works', [])) != duplicate.ticket_count:
-                    logger.error(f"Duplicate contact ticket count mismatch! Expected {duplicate.ticket_count} but found {len(duplicate_tickets.get('works', []))}")
+                if len(duplicate_tickets.get("works", [])) != duplicate.ticket_count:
+                    logger.error(
+                        f"Duplicate contact ticket count mismatch! Expected {duplicate.ticket_count} but found {len(duplicate_tickets.get('works', []))}"
+                    )
                     return False
 
             logger.info("Backup integrity verification passed.")
@@ -365,7 +398,7 @@ class ContactMerger:
             # Step 4: Update primary's external_ref
             if not self.api.update_external_ref(primary.rev_user_id, duplicate.external_ref):
                 raise Exception("Failed to update external_ref")
-            
+
             self.merged_pairs.append((primary, duplicate))
             self.savepoint.add_processed_pair(primary.rev_user_id, duplicate.rev_user_id)
             logger.info("✓ Merge completed successfully")
@@ -381,12 +414,12 @@ class ContactMerger:
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         report_dir = Path("reports")
         report_dir.mkdir(exist_ok=True)
-        
+
         report = {
             "summary": {
                 "total_merges_attempted": len(self.merged_pairs) + len(self.failed_merges),
                 "successful_merges": len(self.merged_pairs),
-                "failed_merges": len(self.failed_merges)
+                "failed_merges": len(self.failed_merges),
             },
             "successful_merges": [
                 {
@@ -397,15 +430,15 @@ class ContactMerger:
                         "original_external_ref": primary.external_ref,
                         "new_external_ref": duplicate.external_ref,
                         "original_ticket_count": primary.ticket_count,
-                        "final_ticket_count": primary.ticket_count + duplicate.ticket_count
+                        "final_ticket_count": primary.ticket_count + duplicate.ticket_count,
                     },
                     "duplicate": {
                         "display_name": duplicate.display_name,
                         "email": duplicate.email,
                         "id": duplicate.rev_user_id,
                         "external_ref": duplicate.external_ref,
-                        "ticket_count": duplicate.ticket_count
-                    }
+                        "ticket_count": duplicate.ticket_count,
+                    },
                 }
                 for primary, duplicate in self.merged_pairs
             ],
@@ -414,21 +447,21 @@ class ContactMerger:
                     "primary": {
                         "display_name": primary.display_name,
                         "email": primary.email,
-                        "id": primary.rev_user_id
+                        "id": primary.rev_user_id,
                     },
                     "duplicate": {
                         "display_name": duplicate.display_name,
                         "email": duplicate.email,
-                        "id": duplicate.rev_user_id
+                        "id": duplicate.rev_user_id,
                     },
-                    "error": error
+                    "error": error,
                 }
                 for primary, duplicate, error in self.failed_merges
-            ]
+            ],
         }
 
         report_path = report_dir / f"merge_report_{timestamp}.json"
-        with open(report_path, 'w', encoding='utf-8') as f:
+        with open(report_path, "w", encoding="utf-8") as f:
             json.dump(report, f, indent=2)
         logger.info(f"Generated report: {report_path}")
 
@@ -436,9 +469,9 @@ class ContactMerger:
         """Process the CSV file and merge duplicate contacts"""
         self.preview_mode = preview
         contacts = []
-        
+
         # Read and validate contacts from CSV
-        with open(csv_path, newline='', encoding='utf-8') as csvfile:
+        with open(csv_path, newline="", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 try:
@@ -466,6 +499,7 @@ class ContactMerger:
             logger.info(f"\nProcessing pair {idx}/{total}")
             self.merge_contacts(primary, duplicate)
 
+
 def main():
     parser = argparse.ArgumentParser(description="Merge duplicate DevRev contacts")
     parser.add_argument("--csv", required=True, help="Path to the CSV file containing contacts")
@@ -485,7 +519,7 @@ def main():
             return
 
         # Create required directories
-        for directory in ['logs', 'reports', 'backups']:
+        for directory in ["logs", "reports", "backups"]:
             Path(directory).mkdir(exist_ok=True)
 
         # Initialize API and merger
@@ -496,10 +530,10 @@ def main():
         logger.info(f"Starting contact merge process...")
         logger.info(f"CSV file: {args.csv}")
         logger.info(f"Preview mode: {args.preview}")
-        
+
         merger.process_csv(args.csv, args.preview)
         merger.generate_report()
-        
+
         # Print summary
         if not args.preview:
             logger.info("\nMerge process completed!")
@@ -509,10 +543,11 @@ def main():
                 logger.info("\nFailed merges:")
                 for primary, duplicate, error in merger.failed_merges:
                     logger.info(f"- {primary.email}: {error}")
-        
+
     except Exception as e:
         logger.error(f"An error occurred: {str(e)}")
         raise
+
 
 if __name__ == "__main__":
     main()

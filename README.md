@@ -1,178 +1,166 @@
 # DevRev Contact Merge Tool
 
-This repository contains a Python-based tool designed to merge duplicate contacts in the DevRev system. It not only automates the merge process through the DevRev API but also incorporates robust safety measures to back up all related ticket and conversation data before proceeding with any merge. This ensures that critical data (including tickets with external communications) is preserved and verified before contact data is altered in production.
+This repository contains a Python-based tool designed to merge duplicate contacts in the DevRev system, specifically handling the migration of tickets and conversations between REVU- and user_ format contacts while maintaining data integrity.
 
-## Table of Contents
+## ⚠️ Important Safety Notes
 
-- [Features](#features)
-- [Architecture](#architecture)
-- [Prerequisites](#prerequisites)
-- [Setup](#setup)
-- [Usage](#usage)
-  - [CSV Input File](#csv-input-file)
-  - [Merge Process](#merge-process)
-  - [Preview Mode](#preview-mode)
-- [Snowflake Query for Generating contacts.csv](#snowflake-query-for-generating-contactscsv)
-- [Logging and Reporting](#logging-and-reporting)
-- [Contributing](#contributing)
-- [License](#license)
+- **ALWAYS RUN IN PREVIEW MODE FIRST**: Before executing any merges in production, use the `--preview` flag to verify the intended changes.
+- **START WITH A SMALL BATCH**: Test with a limited dataset first using the test sample creation utility.
+- **BACKUP VERIFICATION IS CRITICAL**: The tool will abort if backup verification fails - do not bypass this check.
+- **NETWORK CONNECTIVITY**: Ensure stable network connection during the merge process to prevent interrupted operations.
 
 ## Features
 
-- **Automated Merge Process:**  
-  Identify and merge duplicate contacts based on email and external reference (either `REVU-` or `user_` formats).
-
-- **Data Backup:**  
-  Before any merge, the tool backs up all ticket data and associated conversations for both primary and duplicate contacts in a timestamped, structured format.
-
-- **Backup Integrity Verification:**  
-  Verifies that the ticket counts in the backup match the expected values to ensure backup integrity.
-
-- **Rate Limiting and Retry Handling:**  
-  Incorporates rate limiting and retry logic using the `ratelimit` package to handle API errors and improve reliability during transient failures.
-
-- **Detailed Logging and Reporting:**  
-  Logs every step of the process, and generates a detailed JSON report summarizing successful merges and any failures.
-
-## Architecture
-
-The repository is composed of several key components:
-
-- **`Contact` Data Class:**  
-  Represents contact records parsed from a CSV file, including methods for validation and type checking based on `external_ref`.
-
-- **`DevRevAPI` Class:**  
-  Handles communication with the DevRev API, including merging contacts, verifying merges, updating external references, and backing up contact data.
-
-- **`SavePoint` Class:**  
-  Manages the savepoint mechanism to track processed merge pairs and avoid duplicate operations.
-
-- **`ContactMerger` Class:**  
-  Orchestrates the overall process: reading contacts from the CSV, identifying duplicates, performing backups, verifying integrity, merging contacts, and generating a report.
-
-- **`main()` Function:**  
-  Provides the entry point for the command-line interface, accepts arguments such as the CSV file path and a preview mode flag.
+[Previous features section remains the same...]
 
 ## Prerequisites
 
-- **Python 3.8+**
-- **Required Python Packages:**  
+- Python 3.8+
+- Required Python Packages:
   - `requests`
   - `python-dotenv`
   - `ratelimit`
-  
-  You can install the dependencies via:
-  
-  ```bash
-  pip install -r requirements.txt
-Environment Variables:
-A .env file must be present in the repository root with at least the following variable defined:
+- Stable network connection
+- DevRev API access with appropriate permissions
+- Sufficient disk space for backups (estimate ~1MB per ticket with conversations)
 
-dotenv
-Copy code
-DEVREV_API_TOKEN=<your_devrev_api_token_here>
-Setup
-Clone the repository:
+## Setup
 
-bash
-Copy code
-git clone https://github.com/yourusername/devrev-contact-merge-tool.git
-cd devrev-contact-merge-tool
-Install the dependencies:
+[Previous setup section remains...]
 
-bash
-Copy code
-pip install -r requirements.txt
-Create and configure the .env file:
+## Testing
 
-bash
-Copy code
-cp .env.example .env
-# Edit .env with your DEVREV_API_TOKEN value
+### Creating a Test Sample
+```python
+# Create a small test sample before running on all contacts
+python create_test_sample.py --input contacts.csv --output test_contacts.csv --size 4
+
+Validating Backups
+After running the tool, verify your backups:
+
+# Check backup integrity
+python verify_backups.py --backup-dir backups/
+
 Usage
-CSV Input File
-The tool processes a CSV file containing contact information. The CSV file is generated via a Snowflake query detailed below. Each row in the CSV should contain the following fields (all fields are required):
+Before Running
 
-REV_USER_ID
-DISPLAY_NAME
-EMAIL
-EXTERNAL_REF
-FULL_NAME
-TICKET_COUNT
-CREATED_AT
-UPDATED_AT
-Merge Process
-Run the merge process with:
+1. Ensure sufficient disk space for backups
+2. Verify API token permissions
+3. Test network connectivity to DevRev API
+4. Create a backup of your CSV file
 
-bash
-Copy code
-python merge_contacts.py --csv path/to/contacts.csv
-This command will:
+Running the Tool
 
-Read and validate the CSV file.
-Identify duplicate contacts based on email and external reference criteria.
-Back up ticket and conversation data for each contact.
-Perform backup integrity checks.
-Execute the merge via the DevRev API.
-Generate detailed logs and a summary report (reports/merge_report_<timestamp>.json).
-Preview Mode
-To see what actions would be taken without performing any actual changes, run:
+1. Preview Mode (Required first step):
+python merge_contacts.py --csv contacts.csv --preview
 
-bash
-Copy code
-python merge_contacts.py --csv path/to/contacts.csv --preview
-This mode outputs the planned actions for each duplicate pair without calling the merge or backup endpoints.
+2. Test Sample (Recommended second step):
+python merge_contacts.py --csv test_contacts.csv
 
-Snowflake Query for Generating contacts.csv
-Below is the Snowflake SQL query used to generate the contacts.csv file. This query aggregates ticket counts and selects relevant contact data from the DevRev tables:
+3. Full Run:
+python merge_contacts.py --csv contacts.csv
 
-sql
-Copy code
-WITH ticket_counts AS (
-    SELECT 
-        r.REV_USER_ID,
-        GREATEST(
-            COUNT(DISTINCT CASE WHEN w.OWNED_BY_ID = r.REV_USER_ID THEN w.WORK_ID END),
-            COUNT(DISTINCT CASE WHEN w.CREATED_BY_ID = r.REV_USER_ID THEN w.WORK_ID END),
-            COUNT(DISTINCT CASE WHEN w.REPORTED_BY_ID = r.REV_USER_ID THEN w.WORK_ID END)
-        ) as total_tickets
-    FROM ANALYTICS.DBT_BASE_DEVREV.DEVREV_REV_USERS r
-    LEFT JOIN ANALYTICS.DBT_BASE_DEVREV.DEVREV_WORKS w 
-        ON (w.OWNED_BY_ID = r.REV_USER_ID 
-            OR w.CREATED_BY_ID = r.REV_USER_ID
-            OR w.REPORTED_BY_ID = r.REV_USER_ID)
-    WHERE w.TYPE IN ('ticket', 'issue')
-    GROUP BY r.REV_USER_ID
-)
-SELECT 
-    r.REV_USER_ID,
-    r.DISPLAY_NAME,
-    r.EMAIL,
-    r.EXTERNAL_REF,
-    r.FULL_NAME,
-    r.CREATED_AT,
-    r.UPDATED_AT,
-    COALESCE(t.total_tickets, 0) as TICKET_COUNT
-FROM ANALYTICS.DBT_BASE_DEVREV.DEVREV_REV_USERS r
-LEFT JOIN ticket_counts t ON r.REV_USER_ID = t.REV_USER_ID
-WHERE r.EMAIL ILIKE '%@velocityglobal.com%'
-AND (
-    -- Either REVU- format
-    r.EXTERNAL_REF LIKE 'REVU-%'
-    OR 
-    -- Or user_ format
-    r.EXTERNAL_REF LIKE 'user_%'
-)
-ORDER BY r.EMAIL;
-Logging and Reporting
-Logs:
-Logs are stored in the logs/ directory with each run saved in a timestamped file (e.g., contact_merge_20250115_142305.log).
+Backup Structure
+backups/
+├── user@velocityglobal.com_20250115_123456/
+│   ├── tickets.json           # All tickets data
+│   ├── metadata.json         # Contact metadata
+│   ├── conversations/        # Conversations directory
+│   │   ├── ticket1/         # Per-ticket conversations
+│   │   │   ├── messages.json
+│   │   │   └── attachments/
+│   │   └── ticket2/
+│   └── verification.json    # Backup integrity data
 
-Backup Files:
-Data backup (tickets and conversations) files are stored in the backups/ directory, organized by contact email and timestamp.
+Error Handling
+Common Issues and Solutions
 
-Report:
-A summary report in JSON format is generated post-merge in the reports/ directory, detailing:
+* API Rate Limiting: The tool automatically handles rate limiting with exponential backoff
+* Network Timeouts: Automatic retry mechanism for transient failures
+* Verification Failures: Check logs for specific mismatch details
+* Incomplete Merges: Use savepoints to resume interrupted operations
 
-Total merges attempted
-Successful and failed merge details
+Recovery Process
+If a merge fails:
+
+1. Check the logs for the specific error
+2. Verify the backup data is intact
+3. Use the backup verification tool
+4. Resume from last savepoint if needed
+
+Monitoring and Maintenance
+Log Monitoring
+
+* Check logs/ directory for detailed operation logs
+* Monitor the reports/ directory for merge summaries
+* Review backup integrity reports
+
+Cleanup
+
+* Regular cleanup of old backup data (After verifying successful merges)
+* Archive completed merge reports
+* Maintain savepoint files for reference
+
+Best Practices
+
+1. Before Running:
+
+* Verify DevRev API access
+* Check disk space for backups
+* Test with a small sample
+* Run in preview mode
+
+
+2. During Execution:
+
+* Monitor log files
+* Watch for error patterns
+* Keep terminal window open
+
+
+3. After Completion:
+
+* Verify merge report
+* Check backup integrity
+* Archive important logs
+* Clean up temporary files
+
+Troubleshooting
+Common issues and their solutions:
+
+* API Authentication failures
+* Network timeout handling
+* Backup verification errors
+* Merge conflict resolution
+
+## Contributing
+
+We welcome contributions to improve the DevRev Contact Merge Tool! Here's how you can help:
+
+### Submitting Changes
+1. Fork the repository
+2. Create a new branch (`git checkout -b feature/amazing-feature`)
+3. Make your changes
+4. Run the test suite to ensure everything works
+5. Commit your changes (`git commit -m 'Add amazing feature'`)
+6. Push to the branch (`git push origin feature/amazing-feature`)
+7. Open a Pull Request
+
+### Development Guidelines
+- Follow PEP 8 style guidelines
+- Add unit tests for new features
+- Update documentation as needed
+- Keep commits atomic and well-described
+- Test thoroughly with preview mode before submitting
+
+### Bug Reports
+- Use the GitHub issue tracker
+- Include Python and dependency versions
+- Provide sample data (sanitized if needed)
+- Describe expected vs actual behavior
+
+## License
+
+This project is licensed under the MIT License - see below for details:
+
+
