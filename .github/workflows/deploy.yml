@@ -3,7 +3,8 @@ name: Deploy Report to Vercel
 on:
   push:
     branches:
-      - v.4.0
+      - v.4.0  # or whatever your main branch name is
+  workflow_dispatch:  # Allows manual triggers of the workflow
 
 jobs:
   deploy:
@@ -26,24 +27,6 @@ jobs:
       - name: Generate HTML Report
         run: python devrev_merge.py --csv contacts.csv --preview
 
-      # Add debug steps to verify file generation and content
-      - name: Debug - List directory structure
-        run: |
-          echo "Current directory:"
-          pwd
-          echo "Directory contents:"
-          ls -R
-
-      - name: Debug - Check reports directory
-        run: |
-          if [ -d "reports" ]; then
-            echo "Reports directory exists"
-            ls -la reports/
-          else
-            echo "Reports directory not found"
-          fi
-
-      # Modified copy step with error checking
       - name: Set latest report as index.html
         run: |
           if [ -d "reports" ]; then
@@ -51,8 +34,6 @@ jobs:
             if [ -n "$latest" ]; then
               echo "Found latest report: $latest"
               cp "$latest" reports/index.html
-              echo "Content of index.html:"
-              head -n 5 reports/index.html
             else
               echo "No report files found!"
               exit 1
@@ -68,5 +49,7 @@ jobs:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          working-directory: './reports'  # Changed to deploy from reports directory
-          prod: true
+          working-directory: './reports'
+          prod: true  # This forces production deployment
+          alias-domains: |  # Optional: Add your domains here
+            merge-duplicates-vg.vercel.app

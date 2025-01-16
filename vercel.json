@@ -1,9 +1,10 @@
 {
-    "version": 2,
-    "outputDirectory": "reports",
-    "buildCommand": null,
-    "devCommand": null,
-    "installCommand": null,
-    "public": true,
-    "cleanUrls": true
-  }
+  "version": 2,
+  "github": {
+    "enabled": true,
+    "silent": true,
+    "autoAlias": false
+  },
+  "public": true,
+  "cleanUrls": true
+}
