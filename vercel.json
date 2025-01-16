@@ -18,5 +18,5 @@
   ],
   "cleanUrls": true,
   "trailingSlash": false,
-  "ignoreCommand": true
+  "ignoreCommand": null
 }

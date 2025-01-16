@@ -5,6 +5,12 @@ on:
     branches:
       - v.4.0
   workflow_dispatch:
+    inputs:
+      preview_mode:
+        description: 'Run in preview mode'
+        required: true
+        type: boolean
+        default: true
 
 jobs:
   Deploy-Production:
@@ -25,7 +31,14 @@ jobs:
           pip install -r requirements.txt
 
       - name: Generate HTML Report
-        run: python devrev_merge.py --csv contacts.csv --preview
+        run: |
+          if [[ "${{ github.event.inputs.preview_mode }}" == "true" || "${{ github.event_name }}" == "push" ]]; then
+            echo "Running in preview mode..."
+            python devrev_merge.py --csv contacts.csv --preview
+          else
+            echo "Running in production mode..."
+            python devrev_merge.py --csv contacts.csv
+          fi
 
       - name: Set latest report as index.html
         run: |
