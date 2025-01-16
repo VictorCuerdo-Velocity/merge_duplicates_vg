@@ -20,7 +20,9 @@ LOG_FILE_PATH = None
 
 # Load environment variables
 load_dotenv()
-
+class Colors:
+    GREEN = '\033[92m'
+    RESET = '\033[0m'
 # Configure logging
 def setup_logging():
     """Configure logging with both file and console output"""
@@ -608,7 +610,7 @@ class ContactMerger:
 
         # Identify duplicates
         duplicates = self.identify_duplicates(contacts)
-        logger.info(f"\n{Colors.GREEN}Found {len(duplicates)} duplicate pairs to process{Colors.RESET}")
+        logger.info(f"\nFound {len(duplicates)} duplicate pairs to process")
 
         if preview:
             logger.info("\nPREVIEW MODE - No changes will be made")
