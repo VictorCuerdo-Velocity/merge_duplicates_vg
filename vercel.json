@@ -1,10 +1,23 @@
 {
   "version": 2,
-  "github": {
-    "enabled": true,
-    "silent": true,
-    "autoAlias": false
-  },
   "public": true,
-  "cleanUrls": true
+  "git": {
+    "deploymentEnabled": {
+      "v.4.0": true
+    }
+  },
+  "builds": [
+    {
+      "src": "reports/**/*",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/reports/$1"
+    }
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
 }
