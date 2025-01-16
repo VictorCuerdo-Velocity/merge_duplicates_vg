@@ -423,53 +423,53 @@ class ContactMerger:
         report_dir.mkdir(exist_ok=True)
 
         # If no data, add dummy data for testing to avoid blank reports
-        if len(self.merged_pairs) == 0 and len(self.failed_merges) == 0:
-            logger.warning("No merges were performed. Adding dummy data for testing...")
-            self.merged_pairs.append((
-                Contact(
-                    rev_user_id="12345",
-                    display_name="John Doe",
-                    email="john.doe@example.com",
-                    external_ref="REVU-123",
-                    full_name="Johnathan Doe",
-                    ticket_count=5,
-                    created_at="2025-01-15T10:00:00",
-                    updated_at="2025-01-15T10:30:00"
-                ),
-                Contact(
-                    rev_user_id="67890",
-                    display_name="Jane Doe",
-                    email="jane.doe@example.com",
-                    external_ref="user_456",
-                    full_name="Jane A. Doe",
-                    ticket_count=3,
-                    created_at="2025-01-10T14:00:00",
-                    updated_at="2025-01-15T10:20:00"
-                )
-            ))
-            self.failed_merges.append((
-                Contact(
-                    rev_user_id="22222",
-                    display_name="Failed Merge Primary",
-                    email="failed.primary@example.com",
-                    external_ref="user_failed_primary",
-                    full_name="Failed Merge Primary",
-                    ticket_count=0,
-                    created_at="2025-01-01T00:00:00",
-                    updated_at="2025-01-01T00:00:00"
-                ),
-                Contact(
-                    rev_user_id="33333",
-                    display_name="Failed Merge Duplicate",
-                    email="failed.duplicate@example.com",
-                    external_ref="user_failed_duplicate",
-                    full_name="Failed Merge Duplicate",
-                    ticket_count=0,
-                    created_at="2025-01-01T00:00:00",
-                    updated_at="2025-01-01T00:00:00"
-                ),
-                "Sample error: Could not merge due to invalid user status"
-            ))
+        #if len(self.merged_pairs) == 0 and len(self.failed_merges) == 0:
+        #    logger.warning("No merges were performed. Adding dummy data for testing...")
+        #    self.merged_pairs.append((
+        #        Contact(
+        #            rev_user_id="12345",
+        #            display_name="John Doe",
+        #            email="john.doe@example.com",
+        #            external_ref="REVU-123",
+        #            full_name="Johnathan Doe",
+        #            ticket_count=5,
+        #            created_at="2025-01-15T10:00:00",
+        #            updated_at="2025-01-15T10:30:00"
+        #        ),
+        #        Contact(
+        #            rev_user_id="67890",
+        #            display_name="Jane Doe",
+        #            email="jane.doe@example.com",
+        #            external_ref="user_456",
+        #            full_name="Jane A. Doe",
+        #            ticket_count=3,
+        #            created_at="2025-01-10T14:00:00",
+        #            updated_at="2025-01-15T10:20:00"
+        #        )
+        #    ))
+        #    self.failed_merges.append((
+        #        Contact(
+        #            rev_user_id="22222",
+        #            display_name="Failed Merge Primary",
+        #            email="failed.primary@example.com",
+        #            external_ref="user_failed_primary",
+        #            full_name="Failed Merge Primary",
+        #            ticket_count=0,
+        #            created_at="2025-01-01T00:00:00",
+        #            updated_at="2025-01-01T00:00:00"
+        #        ),
+        #        Contact(
+        #            rev_user_id="33333",
+        #            display_name="Failed Merge Duplicate",
+        #            email="failed.duplicate@example.com",
+        #            external_ref="user_failed_duplicate",
+        #            full_name="Failed Merge Duplicate",
+        #            ticket_count=0,
+        #            created_at="2025-01-01T00:00:00",
+        #            updated_at="2025-01-01T00:00:00"
+        #        ),
+        #        "Sample error: Could not merge due to invalid user status"
+        #    ))
 
         report = {
             "summary": {
