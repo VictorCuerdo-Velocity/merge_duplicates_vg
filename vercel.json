@@ -10,13 +10,12 @@
       "use": "@vercel/static"
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/(.*)",
-      "dest": "/reports/$1"
+      "source": "/(.*)",
+      "destination": "/reports/$1"
     }
   ],
   "cleanUrls": true,
-  "trailingSlash": false,
-  "ignoreCommand": null
+  "trailingSlash": false
 }
