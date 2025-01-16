@@ -589,6 +589,9 @@ class ContactMerger:
             f.write(html_content)
 
         logger.info(f"Generated HTML report: {report_path}")
+class Colors:
+    GREEN = '\033[92m'
+    RESET = '\033[0m'
 
     def process_csv(self, csv_path: str, preview: bool = False) -> None:
         """Process the CSV file and merge duplicate contacts"""
@@ -608,7 +611,7 @@ class ContactMerger:
 
         # Identify duplicates
         duplicates = self.identify_duplicates(contacts)
-        logger.info(f"\nFound {len(duplicates)} duplicate pairs to process")
+        logger.info(f"\n{Colors.GREEN}Found {len(duplicates)} duplicate pairs to process{Colors.RESET}")
 
         if preview:
             logger.info("\nPREVIEW MODE - No changes will be made")
