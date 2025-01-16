@@ -4,18 +4,18 @@
   <meta charset="UTF-8">
   <title>Contact Merge Report - {{ timestamp }}</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 20px; }
+    body { font-family: monospace; margin: 20px; }
     h1 { color: #333; }
     table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
     th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
     th { background-color: #f4f4f4; }
     .success { color: green; }
     .failure { color: red; }
-    .record-number { color: #E91E63; font-weight: bold; font-size: 1.6em; }
+    .record-number { color: #E91E63; font-weight: bold; font-size: 2em; }
     .ref-1 { color: #2196F3; }
     .ref-2 { color: #FF9800; }
     /* Additional colors */
-    .found { color: green; }
+    .found { color: green; font-size: 1.2em; }
     .primary-log { color: green; }
     .duplicate-log { color: red; }
     pre { 
@@ -25,8 +25,13 @@
       overflow-x: auto;
       white-space: pre-wrap;
       word-wrap: break-word;
+      margin: 0;
     }
-    .log-line { display: block; }
+    .log-line { 
+      display: block; 
+      margin: 0; 
+      line-height: 1.2;
+    }
     .log-line:hover { background-color: #f0f0f0; }
   </style>
 </head>
@@ -103,7 +108,6 @@
   <pre>
 {% for line in log_content.split('\n') %}
   {% set trimmed = line.strip() %}
-  {# Check if the line is not empty #}
   {% if trimmed %}
     {% if trimmed[0:6] == "Found " and "duplicate pairs to process" in trimmed %}
       <span class="log-line found">{{ trimmed }}</span>
@@ -123,7 +127,6 @@
       <span class="log-line">{{ trimmed }}</span>
     {% endif %}
   {% else %}
-    {# If the line is empty, simply output a break #}
     <br>
   {% endif %}
 {% endfor %}
