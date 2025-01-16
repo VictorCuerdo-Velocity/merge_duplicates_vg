@@ -11,17 +11,23 @@
         th { background-color: #f4f4f4; }
         .success { color: green; }
         .failure { color: red; }
-        pre { background: #f8f8f8; padding: 10px; border: 1px solid #ccc; overflow-x: auto; }
-        .green-text { color: #4CAF50; font-weight: bold; }
-        
-        /* New color styles for log sections */
-        .record-count { color: #E91E63; font-weight: bold; } /* Pink for record counts */
-        .email-info { color: #2196F3; } /* Blue for email addresses */
-        .external-ref { color: #FF9800; } /* Orange for External references */
-        .user-id { color: #9C27B0; } /* Purple for user IDs */
-        .skipped-group { color: #607D8B; } /* Blue Grey for "Skipped duplicate group" */
-        .timestamp { color: #795548; } /* Brown for timestamps */
-</style>
+        .record-count { color: #E91E63; }
+        .email-info { color: #2196F3; }
+        .external-ref { color: #FF9800; }
+        .user-id { color: #9C27B0; }
+        .skipped-group { color: #607D8B; }
+        .timestamp { color: #795548; }
+        pre { 
+            background: #f8f8f8; 
+            padding: 10px; 
+            border: 1px solid #ccc; 
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .log-line { display: block; }
+        .log-line:hover { background-color: #f0f0f0; }
+    </style>
 </head>
 <body>
     <h1>Contact Merge Report</h1>
@@ -92,20 +98,19 @@
         <p>No failed merges.</p>
     {% endif %}
 
-    <h2>Merge Statistics</h2>
-    <p>[placeholder].</p>
-
     <h2>Log Details</h2>
-    <pre>{{ log_content | replace('has 1 record(s)', '<span class="record-count">has 1 record(s)</span>')
-                       | replace('has 2 record(s)', '<span class="record-count">has 2 record(s)</span>')
-                       | replace('has 3 record(s)', '<span class="record-count">has 3 record(s)</span>')
-                       | replace('Email:', '<span class="email-info">Email:</span>')
-                       | replace('External references:', '<span class="external-ref">External references:</span>')
-                       | replace('Skipped duplicate group', '<span class="skipped-group">Skipped duplicate group</span>')
-                       | replace('\033[92m', '<span class="green-text">')
-                       | replace('\033[0m', '</span>')
-                       | replace(r'(user_[a-zA-Z0-9]+)', '<span class="user-id">\\1</span>')
-                       | replace(r'(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2},\d{3})', '<span class="timestamp">\\1</span>')
-    }}</pre>
+    <pre>{% for line in log_content.split('\n') %}
+        <span class="log-line">
+            {%- if 'has 1 record(s)' in line or 'has 2 record(s)' in line or 'has 3 record(s)' in line -%}
+                <span class="record-count">{{ line }}</span>
+            {%- elif 'External references:' in line -%}
+                <span class="external-ref">{{ line }}</span>
+            {%- elif 'Skipped duplicate group' in line -%}
+                <span class="skipped-group">{{ line }}</span>
+            {%- else -%}
+                {{ line }}
+            {%- endif -%}
+        </span>
+    {% endfor %}</pre>
 </body>
 </html>
