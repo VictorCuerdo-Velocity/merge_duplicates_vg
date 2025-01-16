@@ -11,12 +11,9 @@
         th { background-color: #f4f4f4; }
         .success { color: green; }
         .failure { color: red; }
-        .record-count { color: #E91E63; }
-        .email-info { color: #2196F3; }
-        .external-ref { color: #FF9800; }
-        .user-id { color: #9C27B0; }
-        .skipped-group { color: #607D8B; }
-        .timestamp { color: #795548; }
+        .record-number { color: #E91E63; font-weight: bold; }
+        .ref-1 { color: #2196F3; }
+        .ref-2 { color: #FF9800; }
         pre { 
             background: #f8f8f8; 
             padding: 10px; 
@@ -101,12 +98,14 @@
     <h2>Log Details</h2>
     <pre>{% for line in log_content.split('\n') %}
         <span class="log-line">
-            {%- if 'has 1 record(s)' in line or 'has 2 record(s)' in line or 'has 3 record(s)' in line -%}
-                <span class="record-count">{{ line }}</span>
+            {%- if 'record(s)' in line -%}
+                {%- set parts = line.split(' has ') -%}
+                {%- set number = parts[1].split(' ')[0] -%}
+                {{ parts[0] }} has <span class="record-number">{{ number }}</span> record(s)
             {%- elif 'External references:' in line -%}
-                <span class="external-ref">{{ line }}</span>
-            {%- elif 'Skipped duplicate group' in line -%}
-                <span class="skipped-group">{{ line }}</span>
+                {%- set parts = line.split('External references: [') -%}
+                {%- set refs = parts[1].strip("']").split("', '") -%}
+                {{ parts[0] }}External references: [<span class="ref-1">'{{ refs[0] }}'</span>{% if refs|length > 1 %}, <span class="ref-2">'{{ refs[1] }}'</span>{% endif %}]
             {%- else -%}
                 {{ line }}
             {%- endif -%}
