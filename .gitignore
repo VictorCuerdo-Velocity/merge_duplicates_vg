@@ -1,0 +1,16 @@
+
+# Allow specific folders
+!/reports/
+!/logs/
+!/backups/
+
+# Allow all files inside these folders
+!/reports/*
+!/logs/*
+!/backups/*
+
+
+# Optional: ignore virtual environment and other large files
+.venv/
+*.pyc
+__pycache__/

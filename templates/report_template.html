@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Merge Report - {{ timestamp }}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #333; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #f4f4f4; }
+        .success { color: green; }
+        .failure { color: red; }
+        pre { background: #f8f8f8; padding: 10px; border: 1px solid #ccc; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>Contact Merge Report</h1>
+    <p><strong>Date:</strong> {{ timestamp }}</p>
+
+    <h2>Summary</h2>
+    <ul>
+        <li>Total Merges Attempted: {{ summary.total_merges_attempted }}</li>
+        <li class="success">Successful Merges: {{ summary.successful_merges }}</li>
+        <li class="failure">Failed Merges: {{ summary.failed_merges }}</li>
+    </ul>
+
+    <h2>Successful Merges</h2>
+    {% if successful_merges %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Primary Name</th>
+                    <th>Primary Email</th>
+                    <th>Duplicate Name</th>
+                    <th>Duplicate Email</th>
+                    <th>Original Ticket Count</th>
+                    <th>Final Ticket Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for merge in successful_merges %}
+                <tr>
+                    <td>{{ merge.primary.display_name }}</td>
+                    <td>{{ merge.primary.email }}</td>
+                    <td>{{ merge.duplicate.display_name }}</td>
+                    <td>{{ merge.duplicate.email }}</td>
+                    <td>{{ merge.primary.original_ticket_count }}</td>
+                    <td>{{ merge.primary.final_ticket_count }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No successful merges.</p>
+    {% endif %}
+
+    <h2>Failed Merges</h2>
+    {% if failed_merges %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Primary Name</th>
+                    <th>Primary Email</th>
+                    <th>Duplicate Name</th>
+                    <th>Duplicate Email</th>
+                    <th>Error</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for failure in failed_merges %}
+                <tr>
+                    <td>{{ failure.primary.display_name }}</td>
+                    <td>{{ failure.primary.email }}</td>
+                    <td>{{ failure.duplicate.display_name }}</td>
+                    <td>{{ failure.duplicate.email }}</td>
+                    <td>{{ failure.error }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No failed merges.</p>
+    {% endif %}
+
+    <h2>Merge Statistics</h2>
+    <p>Add additional charts or statistics here if needed.</p>
+
+    <h2>Log Details</h2>
+    <pre>{{ log_content }}</pre>
+</body>
+</html>

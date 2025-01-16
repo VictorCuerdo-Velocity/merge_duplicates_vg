@@ -1,0 +1,9 @@
+{
+    "version": 2,
+    "outputDirectory": "reports",
+    "buildCommand": null,
+    "devCommand": null,
+    "installCommand": null,
+    "public": true,
+    "cleanUrls": true
+  }
