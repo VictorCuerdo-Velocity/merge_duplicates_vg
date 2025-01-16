@@ -11,9 +11,13 @@
         th { background-color: #f4f4f4; }
         .success { color: green; }
         .failure { color: red; }
-        .record-number { color: #E91E63; font-weight: bold; }
+        .record-number { color: #E91E63; font-weight: bold; font-size: 2em; }
         .ref-1 { color: #2196F3; }
         .ref-2 { color: #FF9800; }
+        /* New colors */
+        .found { color: green; }
+        .primary-log { color: green; }
+        .duplicate-log { color: red; }
         pre { 
             background: #f8f8f8; 
             padding: 10px; 
@@ -96,20 +100,27 @@
     {% endif %}
 
     <h2>Log Details</h2>
-    <pre>{% for line in log_content.split('\n') %}
-        <span class="log-line">
-            {%- if 'record(s)' in line -%}
-                {%- set parts = line.split(' has ') -%}
-                {%- set number = parts[1].split(' ')[0] -%}
-                {{ parts[0] }} has <span class="record-number">{{ number }}</span> record(s)
-            {%- elif 'External references:' in line -%}
-                {%- set parts = line.split('External references: [') -%}
-                {%- set refs = parts[1].strip("']").split("', '") -%}
-                {{ parts[0] }}External references: [<span class="ref-1">'{{ refs[0] }}'</span>{% if refs|length > 1 %}, <span class="ref-2">'{{ refs[1] }}'</span>{% endif %}]
-            {%- else -%}
-                {{ line }}
-            {%- endif -%}
-        </span>
-    {% endfor %}</pre>
+    <pre>
+{% for line in log_content.split('\n') -%}
+    {%- set trimmed = line.strip() -%}
+    {%- if 'Found [' in trimmed and 'duplicate pairs to process' in trimmed -%}
+        <span class="log-line found">{{ trimmed }}</span>
+    {%- elif 'Primary:' in trimmed -%}
+        <span class="log-line primary-log">{{ trimmed }}</span>
+    {%- elif 'Duplicate:' in trimmed -%}
+        <span class="log-line duplicate-log">{{ trimmed }}</span>
+    {%- elif 'record(s)' in trimmed -%}
+        {%- set parts = trimmed.split(' has ') -%}
+        {%- set number = parts[1].split(' ')[0] -%}
+        <span class="log-line">{{ parts[0] }} has <span class="record-number">{{ number }}</span> record(s)</span>
+    {%- elif 'External references:' in trimmed -%}
+        {%- set parts = trimmed.split('External references: [') -%}
+        {%- set refs = parts[1].strip("']").split("', '") -%}
+        <span class="log-line">{{ parts[0] }}External references: [<span class="ref-1">'{{ refs[0] }}'</span>{% if refs|length > 1 %}, <span class="ref-2">'{{ refs[1] }}'</span>{% endif %}]</span>
+    {%- else -%}
+        <span class="log-line">{{ trimmed }}</span>
+    {%- endif %}
+{% endfor %}
+    </pre>
 </body>
 </html>
