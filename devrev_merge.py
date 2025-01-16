@@ -20,7 +20,9 @@ LOG_FILE_PATH = None
 
 # Load environment variables
 load_dotenv()
-
+class Colors:
+    GREEN = '\033[92m'
+    RESET = '\033[0m'
 # Configure logging
 def setup_logging():
     """Configure logging with both file and console output"""
@@ -589,9 +591,6 @@ class ContactMerger:
             f.write(html_content)
 
         logger.info(f"Generated HTML report: {report_path}")
-class Colors:
-    GREEN = '\033[92m'
-    RESET = '\033[0m'
 
     def process_csv(self, csv_path: str, preview: bool = False) -> None:
         """Process the CSV file and merge duplicate contacts"""

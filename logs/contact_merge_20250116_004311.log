@@ -1,0 +1,4 @@
+2025-01-16 00:43:11,539 - INFO - Starting contact merge process...
+2025-01-16 00:43:11,539 - INFO - CSV file: contacts.csv
+2025-01-16 00:43:11,539 - INFO - Preview mode: True
+2025-01-16 00:43:11,539 - ERROR - An error occurred: 'ContactMerger' object has no attribute 'process_csv'
