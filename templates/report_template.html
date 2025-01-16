@@ -25,11 +25,9 @@
       overflow-x: auto;
       white-space: pre;
       margin: 0;
+      font-size: 0.95em;
     }
-    .log-line {
-      /* Using inline display so extra vertical spacing is not added */
-      display: inline;
-    }
+    .log-line { display: inline; }
   </style>
 </head>
 <body>
@@ -44,7 +42,7 @@
   </ul>
 
   <h2>Successful Merges</h2>
-  {% if successful_merges %}
+  {%- if successful_merges %}
     <table>
       <thead>
         <tr>
@@ -57,7 +55,7 @@
         </tr>
       </thead>
       <tbody>
-        {% for merge in successful_merges %}
+        {%- for merge in successful_merges %}
         <tr>
           <td>{{ merge.primary.display_name }}</td>
           <td>{{ merge.primary.email }}</td>
@@ -66,15 +64,15 @@
           <td>{{ merge.primary.original_ticket_count }}</td>
           <td>{{ merge.primary.final_ticket_count }}</td>
         </tr>
-        {% endfor %}
+        {%- endfor %}
       </tbody>
     </table>
-  {% else %}
+  {%- else %}
     <p>No successful merges.</p>
-  {% endif %}
+  {%- endif %}
 
   <h2>Failed Merges</h2>
-  {% if failed_merges %}
+  {%- if failed_merges %}
     <table>
       <thead>
         <tr>
@@ -86,7 +84,7 @@
         </tr>
       </thead>
       <tbody>
-        {% for failure in failed_merges %}
+        {%- for failure in failed_merges %}
         <tr>
           <td>{{ failure.primary.display_name }}</td>
           <td>{{ failure.primary.email }}</td>
@@ -94,38 +92,36 @@
           <td>{{ failure.duplicate.email }}</td>
           <td>{{ failure.error }}</td>
         </tr>
-        {% endfor %}
+        {%- endfor %}
       </tbody>
     </table>
-  {% else %}
+  {%- else %}
     <p>No failed merges.</p>
-  {% endif %}
+  {%- endif %}
 
   <h2>Log Details</h2>
-  <pre>{% for line in log_content.split('\n') %}
-{% set trimmed = line.strip() %}
-{% if trimmed %}
-  {% if trimmed[0:6] == "Found " and "duplicate pairs to process" in trimmed %}
+  <pre>{%- for line in log_content.split('\n') -%}
+{%- set trimmed = line.strip() -%}
+{%- if trimmed -%}
+  {%- if trimmed[0:6] == "Found " and "duplicate pairs to process" in trimmed -%}
     <span class="log-line found">{{ trimmed }}</span>
-  {% elif "Primary:" in trimmed %}
+  {%- elif "Primary:" in trimmed -%}
     <span class="log-line primary-log">{{ trimmed }}</span>
-  {% elif "Duplicate:" in trimmed %}
+  {%- elif "Duplicate:" in trimmed -%}
     <span class="log-line duplicate-log">{{ trimmed }}</span>
-  {% elif "record(s)" in trimmed %}
-    {% set parts = trimmed.split(' has ') %}
-    {% set number = parts[1].split(' ')[0] %}
+  {%- elif "record(s)" in trimmed -%}
+    {%- set parts = trimmed.split(' has ') -%}
+    {%- set number = parts[1].split(' ')[0] -%}
     <span class="log-line">{{ parts[0] }} has <span class="record-number">{{ number }}</span> record(s)</span>
-  {% elif "External references:" in trimmed %}
-    {% set parts = trimmed.split('External references: [') %}
-    {% set refs = parts[1].replace("']", "").split("', '") %}
+  {%- elif "External references:" in trimmed -%}
+    {%- set parts = trimmed.split('External references: [') -%}
+    {%- set refs = parts[1].replace("']", "").split("', '") -%}
     <span class="log-line">{{ parts[0] }}External references: [<span class="ref-1">'{{ refs[0] }}'</span>{% if refs|length > 1 %}, <span class="ref-2">'{{ refs[1] }}'</span>{% endif %}]</span>
-  {% else %}
+  {%- else -%}
     <span class="log-line">{{ trimmed }}</span>
-  {% endif %}
-  {{ "\n" }}
-{% else %}
-  {{ "\n" }}
-{% endif %}
-{% endfor %}</pre>
+  {%- endif -%}
+  {%- if not loop.last -%}{{ "\n" }}{%- endif -%}
+{%- endif -%}
+{%- endfor %}</pre>
 </body>
 </html>
