@@ -20,9 +20,7 @@ LOG_FILE_PATH = None
 
 # Load environment variables
 load_dotenv()
-class Colors:
-    GREEN = '\033[92m'
-    RESET = '\033[0m'
+
 # Configure logging
 def setup_logging():
     """Configure logging with both file and console output"""
