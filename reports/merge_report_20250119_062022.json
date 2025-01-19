@@ -1,0 +1,28 @@
+{
+  "summary": {
+    "total_merges_attempted": 1,
+    "successful_merges": 1,
+    "failed_merges": 0
+  },
+  "successful_merges": [
+    {
+      "primary": {
+        "display_name": "Stefania Maria Anna Cagnetta",
+        "email": "stefaniacagnetta@velocityglobal.com",
+        "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/1GoxOkOI7",
+        "original_external_ref": "REVU-1GoxOkOI7",
+        "new_external_ref": "user_put1a1an1a1Ztp1e1dqrru",
+        "original_ticket_count": 0,
+        "final_ticket_count": 0
+      },
+      "duplicate": {
+        "display_name": "stefaniacagnetta@velocityglobal.com",
+        "email": "stefaniacagnetta@velocityglobal.com",
+        "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/19frIGXNH",
+        "external_ref": "user_put1a1an1a1Ztp1e1dqrru",
+        "ticket_count": 0
+      }
+    }
+  ],
+  "failed_merges": []
+}

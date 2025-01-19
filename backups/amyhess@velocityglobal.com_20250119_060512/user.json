@@ -1,0 +1,44 @@
+{
+  "rev_user": {
+    "created_by": {
+      "type": "sys_user",
+      "display_id": "SYSU-1",
+      "display_name": "devrev-bot",
+      "full_name": "DevRev Bot",
+      "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:sysu/1",
+      "state": "active"
+    },
+    "created_date": "2024-11-06T17:05:04.763Z",
+    "custom_fields": {
+      "tnt__notification_contact": false,
+      "tnt__routing_subtype": "Notifications",
+      "tnt__stage_assignment": "Queued"
+    },
+    "custom_schema_fragments": [
+      "don:core:dvrv-us-1:devo/ye4F1cYu:tenant_fragment/8145"
+    ],
+    "display_id": "REVU-HwcBlaLJ",
+    "display_name": "amyhess@velocityglobal.com",
+    "email": "amyhess@velocityglobal.com",
+    "external_ref": "user_u1b1b1d1esrm1d1b1cnqrp",
+    "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/HwcBlaLJ",
+    "is_verified": true,
+    "modified_by": {
+      "type": "sys_user",
+      "display_id": "SYSU-1",
+      "display_name": "devrev-bot",
+      "full_name": "DevRev Bot",
+      "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:sysu/1",
+      "state": "active"
+    },
+    "modified_date": "2024-11-06T17:05:04.763Z",
+    "rev_org": {
+      "type": "rev_org",
+      "display_id": "REV-15708Y21",
+      "display_name": "Velocity Global - Internal",
+      "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+    },
+    "state": "active",
+    "stock_schema_fragment": "don:core:dvrv-us-1:stock_sf/1334954"
+  }
+}

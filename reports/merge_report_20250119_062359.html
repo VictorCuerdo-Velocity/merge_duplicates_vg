@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Merge Report - 2025-01-19 06:23:59</title>
+  <style>
+    body { font-family: monospace; margin: 20px; }
+    h1 { color: #333; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background-color: #f4f4f4; }
+    .success { color: green; }
+    .failure { color: red; }
+    .record-number { color: #E91E63; font-weight: bold; font-size: 1.4em; }
+    .ref-1 { color: #2196F3; }
+    .ref-2 { color: #FF9800; }
+    /* Colors for specific log lines */
+    .found { color: green; font-size: 1.4em;font-weight: bold; }
+    .primary-log { color: green; }
+    .duplicate-log { color: red; }
+    pre {
+      background: #f8f8f8;
+      padding: 10px;
+      border: 1px solid #ccc;
+      overflow-x: auto;
+      white-space: pre;
+      margin: 0;
+      font-size: 0.95em;
+    }
+    .log-line { display: inline; }
+  </style>
+</head>
+<body>
+  <h1>Contact Merge Report</h1>
+  <p><strong>Date:</strong> 2025-01-19 06:23:59</p>
+
+  <h2>Summary</h2>
+  <ul>
+    <li>Total Merges Attempted: 1</li>
+    <li class="success">Successful Merges: 1</li>
+    <li class="failure">Failed Merges: 0</li>
+  </ul>
+
+  <h2>Successful Merges</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Primary Name</th>
+          <th>Primary Email</th>
+          <th>Duplicate Name</th>
+          <th>Duplicate Email</th>
+          <th>Original Ticket Count</th>
+          <th>Final Ticket Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ling Sing (Sharon) Tang</td>
+          <td>sharontang@velocityglobal.com</td>
+          <td>sharontang@velocityglobal.com</td>
+          <td>sharontang@velocityglobal.com</td>
+          <td>1</td>
+          <td>3</td>
+        </tr>
+      </tbody>
+    </table>
+
+  <h2>Failed Merges</h2>
+    <p>No failed merges.</p>
+
+  <h2>Log Details</h2>
+  <pre><span class="log-line">2025-01-19 06:23:54,353 - INFO - Loaded savepoint with 1 processed pairs</span>
+<span class="log-line">2025-01-19 06:23:54,353 - INFO - Starting contact merge process...</span>
+<span class="log-line">2025-01-19 06:23:54,353 - INFO - CSV file: contacts.csv</span>
+<span class="log-line">2025-01-19 06:23:54,353 - INFO - Preview mode: False</span>
+<span class="log-line">2025-01-19 06:23:54,359 - INFO - Email: sharontang@velocityglobal.com has <span class="record-number">2</span> record(s)</span>
+<span class="log-line">2025-01-19 06:23:54,359 - INFO -</span>
+<span class="log-line found">Found 1 duplicate pairs to process</span>
+<span class="log-line">2025-01-19 06:23:54,359 - INFO -</span>
+<span class="log-line">Processing pair 1/1</span>
+<span class="log-line">2025-01-19 06:23:54,359 - INFO -</span>
+<span class="log-line">Merging contacts for email sharontang@velocityglobal.com</span>
+<span class="log-line primary-log">2025-01-19 06:23:54,359 - INFO - Primary: Ling Sing (Sharon) Tang (don:identity:dvrv-us-1:devo/ye4F1cYu:revu/cquvm4zx)</span>
+<span class="log-line duplicate-log">2025-01-19 06:23:54,359 - INFO - Duplicate: sharontang@velocityglobal.com (don:identity:dvrv-us-1:devo/ye4F1cYu:revu/9eHze6AH)</span>
+<span class="log-line">2025-01-19 06:23:54,359 - INFO - Backing up contact data...</span>
+<span class="log-line">2025-01-19 06:23:55,855 - INFO - ✓ Backed up data for contact sharontang@velocityglobal.com to backups/sharontang@velocityglobal.com_20250119_062354</span>
+<span class="log-line">2025-01-19 06:23:56,853 - INFO - ✓ Backed up data for contact sharontang@velocityglobal.com to backups/sharontang@velocityglobal.com_20250119_062355</span>
+<span class="log-line">2025-01-19 06:23:56,856 - WARNING - Primary contact ticket count mismatch! Expected 1 but found 4 - continuing anyway.</span>
+<span class="log-line">2025-01-19 06:23:56,860 - WARNING - Duplicate contact ticket count mismatch! Expected 2 but found 4 - continuing anyway.</span>
+<span class="log-line">2025-01-19 06:23:56,860 - INFO - Backup integrity verification passed.</span>
+<span class="log-line">2025-01-19 06:23:57,243 - INFO - Successfully merged don:identity:dvrv-us-1:devo/ye4F1cYu:revu/9eHze6AH into don:identity:dvrv-us-1:devo/ye4F1cYu:revu/cquvm4zx</span>
+<span class="log-line">2025-01-19 06:23:59,591 - INFO - Successfully updated external_ref for don:identity:dvrv-us-1:devo/ye4F1cYu:revu/cquvm4zx to user_qsnnon1dsm1duuqtn1d1Zn</span>
+<span class="log-line">2025-01-19 06:23:59,596 - INFO - ✓ Merge completed successfully (with forced external_ref overwrite)</span>
+<span class="log-line">2025-01-19 06:23:59,603 - INFO - Generated JSON report: reports/merge_report_20250119_062359.json</span>
+</pre>
+</body>
+</html>

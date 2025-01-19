@@ -1,0 +1,1622 @@
+{
+  "works": [
+    {
+      "type": "ticket",
+      "actual_close_date": "2025-01-16T19:01:11.056Z",
+      "applies_to_part": {
+        "type": "product",
+        "display_id": "PROD-42",
+        "id": "don:core:dvrv-us-1:devo/ye4F1cYu:product/42",
+        "name": "Employee Onboarding",
+        "owned_by": [
+          {
+            "type": "dev_user",
+            "display_id": "DEVU-1780",
+            "display_name": "Velocity Global",
+            "email": "devrevadmin@velocityglobal.com",
+            "full_name": "Velocity Global Bot",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/1780",
+            "state": "active"
+          }
+        ]
+      },
+      "body": "Katja Bloem-Moretti added Amy White and the USA alias to the email thread regarding the onboarding of three new employees for Jeisys Medical Inc. The team is informed about the new USA-supported workers and their respective details.",
+      "channels": [
+        "email"
+      ],
+      "created_by": {
+        "type": "service_account",
+        "display_id": "SVCACC-11",
+        "display_name": "Email Integration Bot",
+        "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:svcacc/11",
+        "state": "active"
+      },
+      "created_date": "2025-01-15T23:06:42.462Z",
+      "custom_fields": {
+        "app_email_integration__auto_response_suppress": "none",
+        "app_email_integration__email_references": [
+          "CAG62iUAaH2Am5Mxk=X_aG1e5-kWgKfVj4bicoVVEgG4Q4ZK5tQ@mail.gmail.com",
+          "CAJN0=+vj4hcKCeHOUnQ7CBzpjkF=91K14Sv+aFrJipN726fzgw@mail.gmail.com"
+        ],
+        "app_email_integration__email_subject": "Re: 3 New USA EE Onboarding through CXP - Jeisys Medical Inc.",
+        "app_email_integration__external_source_id": "CAG62iUAaH2Am5Mxk=X_aG1e5-kWgKfVj4bicoVVEgG4Q4ZK5tQ@mail.gmail.com",
+        "app_email_integration__members": [
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/335",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/854",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/408",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/750",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/149",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/287",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/459"
+        ],
+        "app_email_integration__received_on": "usa-cx@velocityglobal.com",
+        "tnt__ai_assigned_part": "don:core:dvrv-us-1:devo/ye4F1cYu:product/42",
+        "tnt__countries": [
+          "United States of America"
+        ],
+        "tnt__regions": [
+          "Americas"
+        ],
+        "tnt__sub_regions": [
+          "United States of America"
+        ],
+        "tnt__work_duration": "19.91 hours",
+        "tnt__work_duration_counter": 71668594
+      },
+      "custom_schema_fragments": [
+        "don:core:dvrv-us-1:devo/ye4F1cYu:custom_type_fragment/25529",
+        "don:core:dvrv-us-1:devo/ye4F1cYu:app_fragment/9319",
+        "don:core:dvrv-us-1:devo/ye4F1cYu:tenant_fragment/8177"
+      ],
+      "display_id": "TKT-1290456",
+      "group": {
+        "display_id": "group-124",
+        "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:group/124",
+        "member_type": "dev_user",
+        "name": "US EOR CX"
+      },
+      "id": "don:core:dvrv-us-1:devo/ye4F1cYu:ticket/1290456",
+      "modified_by": {
+        "type": "service_account",
+        "display_id": "SVCACC-14",
+        "display_name": "Work Duration Bot",
+        "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:svcacc/14",
+        "state": "active"
+      },
+      "modified_date": "2025-01-16T19:01:14.252Z",
+      "needs_response": false,
+      "owned_by": [
+        {
+          "type": "dev_user",
+          "display_id": "DEVU-287",
+          "display_name": "amyhess",
+          "display_picture": {
+            "display_id": "artifact-2162686",
+            "id": "don:core:dvrv-us-1:devo/ye4F1cYu:artifact/2162686"
+          },
+          "email": "amyhess@velocityglobal.com",
+          "full_name": "Amy Hess",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/287",
+          "state": "active"
+        }
+      ],
+      "reported_by": [
+        {
+          "type": "rev_user",
+          "display_id": "REVU-HwcBlaLJ",
+          "display_name": "amyhess@velocityglobal.com",
+          "email": "amyhess@velocityglobal.com",
+          "external_ref": "user_u1b1b1d1esrm1d1b1cnqrp",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/HwcBlaLJ",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        },
+        {
+          "type": "rev_user",
+          "display_id": "REVU-Fq5Wll4z",
+          "display_name": "Katja Bloem-Moretti",
+          "email": "katjabloemmoretti@velocityglobal.com",
+          "external_ref": "user_mp1a1cmq1e1Zsu1bsqs1dv",
+          "full_name": "Katjabloem-moretti",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/Fq5Wll4z",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        },
+        {
+          "type": "rev_user",
+          "display_id": "REVU-GpmjaK98",
+          "display_name": "Idalia A Diaz",
+          "email": "alexdiaz@velocityglobal.com",
+          "external_ref": "REVU-GpmjaK98",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/GpmjaK98",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        },
+        {
+          "type": "rev_user",
+          "display_id": "REVU-16BD3ZzTw",
+          "display_name": "Amy Hess",
+          "email": "amyhess@velocityglobal.com",
+          "external_ref": "REVU-16BD3ZzTw",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/16BD3ZzTw",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        },
+        {
+          "type": "rev_user",
+          "display_id": "REVU-1HV7wfgGK",
+          "display_name": "Amy White",
+          "email": "amywhite@velocityglobal.com",
+          "external_ref": "REVU-1HV7wfgGK",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/1HV7wfgGK",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        },
+        {
+          "type": "rev_user",
+          "display_id": "REVU-6AMoJCDS",
+          "display_name": "Maxwell Norman Thompson Carter",
+          "email": "maxcarter@velocityglobal.com",
+          "external_ref": "REVU-6AMoJCDS",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/6AMoJCDS",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        },
+        {
+          "type": "rev_user",
+          "display_id": "REVU-lZnayASY",
+          "display_name": "Bryan Realph",
+          "email": "bryanrealph@velocityglobal.com",
+          "external_ref": "bryanrealph@velocityglobal.com",
+          "full_name": "Bryan Realph",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/lZnayASY",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        },
+        {
+          "type": "rev_user",
+          "display_id": "REVU-gkhC44sb",
+          "display_name": "Danny Lynn",
+          "email": "dannylynn@velocityglobal.com",
+          "external_ref": "user_1c1e1evoupq1b1dm1Zq1Z1",
+          "full_name": "Danny Lynn",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/gkhC44sb",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        }
+      ],
+      "rev_org": {
+        "type": "rev_org",
+        "display_id": "REV-15708Y21",
+        "display_name": "Velocity Global - Internal",
+        "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+      },
+      "severity": "medium",
+      "source_channel": "email",
+      "stage": {
+        "name": "resolved",
+        "notes": "",
+        "ordinal": 6000,
+        "stage": {
+          "id": "don:core:dvrv-us-1:devo/ye4F1cYu:custom_stage/18",
+          "name": "resolved"
+        },
+        "state": {
+          "id": "don:core:dvrv-us-1:devo/ye4F1cYu:custom_state/3",
+          "is_final": true,
+          "name": "closed"
+        }
+      },
+      "stock_schema_fragment": "don:core:dvrv-us-1:stock_sf/1337872",
+      "subtype": "internal",
+      "tags": [
+        {
+          "tag": {
+            "display_id": "TAG-10324",
+            "id": "don:core:dvrv-us-1:devo/ye4F1cYu:tag/10324",
+            "name": "usa-cx@velocityglobal.com"
+          }
+        },
+        {
+          "tag": {
+            "display_id": "TAG-10414",
+            "id": "don:core:dvrv-us-1:devo/ye4F1cYu:tag/10414",
+            "name": "usa-cx"
+          }
+        }
+      ],
+      "title": "Re: 3 New USA EE Onboarding through CXP - Jeisys Medical Inc."
+    },
+    {
+      "type": "ticket",
+      "applies_to_part": {
+        "type": "product",
+        "display_id": "PROD-42",
+        "id": "don:core:dvrv-us-1:devo/ye4F1cYu:product/42",
+        "name": "Employee Onboarding",
+        "owned_by": [
+          {
+            "type": "dev_user",
+            "display_id": "DEVU-1780",
+            "display_name": "Velocity Global",
+            "email": "devrevadmin@velocityglobal.com",
+            "full_name": "Velocity Global Bot",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/1780",
+            "state": "active"
+          }
+        ]
+      },
+      "body": "A new employee, Todd Carpenter, has been onboarded in the USA and needs to be recorded in eRecruit. The Client Finance Team is requested to generate a deposit invoice and set up in NetSuite after confirmation from the US Team.",
+      "channels": [
+        "email"
+      ],
+      "created_by": {
+        "type": "service_account",
+        "display_id": "SVCACC-11",
+        "display_name": "Email Integration Bot",
+        "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:svcacc/11",
+        "state": "active"
+      },
+      "created_date": "2025-01-06T23:50:28.129Z",
+      "custom_fields": {
+        "app_email_integration__auto_response_suppress": "none",
+        "app_email_integration__email_references": [
+          "CAADokzRkrxq=_f0fPfE2QUd9E68D63M-yoWECNm7arMYb1aM5g@mail.gmail.com",
+          "010001944c20ae86-6a99bc70-4e18-41a5-9a6b-830154204498-000000@email.amazonses.com",
+          "CAHfp0qaaJPsGdqQi4C4gyHY2A+2YPMYN1Dsyxngnyh4tzqBB9g@mail.gmail.com",
+          "CAHfp0qYgA714L-80Rm0ATQvCVJMCkx=rOyGNR02uK_0OKTGMHA@mail.gmail.com"
+        ],
+        "app_email_integration__email_subject": "New USA EE Onboarding - Styldod - Todd Carpenter",
+        "app_email_integration__external_source_id": "CAADokzRkrxq=_f0fPfE2QUd9E68D63M-yoWECNm7arMYb1aM5g@mail.gmail.com",
+        "app_email_integration__members": [
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/796",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/754",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/794",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/1816",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/1724",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/335",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/287",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/149"
+        ],
+        "app_email_integration__received_on": "usa-cx@velocityglobal.com",
+        "tnt__ai_assigned_part": "don:core:dvrv-us-1:devo/ye4F1cYu:product/42",
+        "tnt__countries": [
+          "United States of America"
+        ],
+        "tnt__regions": [
+          "Americas"
+        ],
+        "tnt__sub_regions": [
+          "United States of America"
+        ],
+        "tnt__visible_to": [
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/149",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/1724",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/1816",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/287",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/335",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/459",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/754",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/794",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/796"
+        ]
+      },
+      "custom_schema_fragments": [
+        "don:core:dvrv-us-1:devo/ye4F1cYu:tenant_fragment/8177",
+        "don:core:dvrv-us-1:devo/ye4F1cYu:app_fragment/9319",
+        "don:core:dvrv-us-1:devo/ye4F1cYu:custom_type_fragment/25529"
+      ],
+      "display_id": "TKT-1280792",
+      "group": {
+        "display_id": "group-124",
+        "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:group/124",
+        "member_type": "dev_user",
+        "name": "US EOR CX"
+      },
+      "id": "don:core:dvrv-us-1:devo/ye4F1cYu:ticket/1280792",
+      "modified_by": {
+        "type": "service_account",
+        "display_id": "SVCACC-2",
+        "display_name": "Convergence Bot",
+        "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:svcacc/2",
+        "state": "active"
+      },
+      "modified_date": "2025-01-18T00:42:05.745Z",
+      "needs_response": false,
+      "owned_by": [
+        {
+          "type": "dev_user",
+          "display_id": "DEVU-459",
+          "display_name": "amywhite",
+          "display_picture": {
+            "display_id": "artifact-2222874",
+            "id": "don:core:dvrv-us-1:devo/ye4F1cYu:artifact/2222874"
+          },
+          "email": "amywhite@velocityglobal.com",
+          "full_name": "Amy White",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/459",
+          "state": "active"
+        }
+      ],
+      "reported_by": [
+        {
+          "type": "rev_user",
+          "display_id": "REVU-HwcBlaLJ",
+          "display_name": "amyhess@velocityglobal.com",
+          "email": "amyhess@velocityglobal.com",
+          "external_ref": "user_u1b1b1d1esrm1d1b1cnqrp",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/HwcBlaLJ",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        },
+        {
+          "type": "rev_user",
+          "display_id": "REVU-Fq5Wll4z",
+          "display_name": "Katja Bloem-Moretti",
+          "email": "katjabloemmoretti@velocityglobal.com",
+          "external_ref": "user_mp1a1cmq1e1Zsu1bsqs1dv",
+          "full_name": "Katjabloem-moretti",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/Fq5Wll4z",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        },
+        {
+          "type": "rev_user",
+          "display_id": "REVU-GpmjaK98",
+          "display_name": "Idalia A Diaz",
+          "email": "alexdiaz@velocityglobal.com",
+          "external_ref": "REVU-GpmjaK98",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/GpmjaK98",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        },
+        {
+          "type": "rev_user",
+          "display_id": "REVU-16BD3ZzTw",
+          "display_name": "Amy Hess",
+          "email": "amyhess@velocityglobal.com",
+          "external_ref": "REVU-16BD3ZzTw",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/16BD3ZzTw",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        },
+        {
+          "type": "rev_user",
+          "display_id": "REVU-wBE1TQ8R",
+          "display_name": "Ricardo Elias",
+          "email": "rickelias@velocityglobal.com",
+          "external_ref": "rickelias@velocityglobal.com",
+          "full_name": "Rick Elias",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/wBE1TQ8R",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        },
+        {
+          "type": "rev_user",
+          "display_id": "REVU-QmVuG5KR",
+          "display_name": "dos-team",
+          "email": "dos-team@velocityglobal.com",
+          "external_ref": "dos-team@velocityglobal.com",
+          "full_name": "dos-team",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/QmVuG5KR",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        }
+      ],
+      "rev_org": {
+        "type": "rev_org",
+        "display_id": "REV-15708Y21",
+        "display_name": "Velocity Global - Internal",
+        "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+      },
+      "severity": "medium",
+      "source_channel": "email",
+      "stage": {
+        "name": "work_in_progress",
+        "ordinal": 2000,
+        "stage": {
+          "id": "don:core:dvrv-us-1:devo/ye4F1cYu:custom_stage/11",
+          "name": "work_in_progress"
+        },
+        "state": {
+          "id": "don:core:dvrv-us-1:devo/ye4F1cYu:custom_state/2",
+          "is_final": false,
+          "name": "in_progress"
+        }
+      },
+      "stock_schema_fragment": "don:core:dvrv-us-1:stock_sf/1337872",
+      "subtype": "internal",
+      "tags": [
+        {
+          "tag": {
+            "display_id": "TAG-10324",
+            "id": "don:core:dvrv-us-1:devo/ye4F1cYu:tag/10324",
+            "name": "usa-cx@velocityglobal.com"
+          }
+        },
+        {
+          "tag": {
+            "display_id": "TAG-10414",
+            "id": "don:core:dvrv-us-1:devo/ye4F1cYu:tag/10414",
+            "name": "usa-cx"
+          }
+        }
+      ],
+      "title": "New USA EE Onboarding - Styldod - Todd Carpenter"
+    },
+    {
+      "type": "ticket",
+      "actual_close_date": "2024-12-30T20:32:09.943Z",
+      "applies_to_part": {
+        "type": "capability",
+        "display_id": "CAPL-213",
+        "id": "don:core:dvrv-us-1:devo/ye4F1cYu:capability/213",
+        "name": "Employee Offboarding (MCP)",
+        "owned_by": [
+          {
+            "type": "dev_user",
+            "display_id": "DEVU-1780",
+            "display_name": "Velocity Global",
+            "email": "devrevadmin@velocityglobal.com",
+            "full_name": "Velocity Global Bot",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/1780",
+            "state": "active"
+          }
+        ]
+      },
+      "body": "Inspire Travel Management Limited (JENZA) is seeking a meeting with HRx and/or Legal to discuss offboarding two employees in the US due to an upcoming acquisition by an American company. They need guidance on transitioning these employees to the new company's payroll within a 7-10 day timeline.",
+      "channels": [
+        "email"
+      ],
+      "created_by": {
+        "type": "service_account",
+        "display_id": "SVCACC-11",
+        "display_name": "Email Integration Bot",
+        "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:svcacc/11",
+        "state": "active"
+      },
+      "created_date": "2024-12-20T21:26:59.385Z",
+      "custom_fields": {
+        "app_email_integration__auto_response_suppress": "none",
+        "app_email_integration__email_references": [
+          "CA+T=yOchXx_99HY+QJXy_-85EUcibvVR3uRiZUF_midew8pj9g@mail.gmail.com",
+          "01000193f11dd913-56084cd6-577d-4849-8123-78b79d9f85ee-000000@email.amazonses.com",
+          "CA+T=yOdY1iSXEWNEibgR-UeFxCLLEP9EedvEG1=UNj+qS7WxcA@mail.gmail.com",
+          "01000193f48f0a95-fa4bdefa-dd0a-42d2-96c7-48ffacb791e4-000000@email.amazonses.com",
+          "0100019405c4736b-fa738c43-f9d8-4109-bc7a-cf8e8c9eb8a1-000000@email.amazonses.com",
+          "0100019417c1b8ac-99bfbee7-21ff-4a76-a4c9-db180771b2cb-000000@email.amazonses.com",
+          "0100019418b839cb-95bca6be-f995-4732-9cc6-b398304b38f5-000000@email.amazonses.com",
+          "0100019418d74ba2-82797482-a425-4f2f-ae3c-a1699ba3ae9c-000000@email.amazonses.com",
+          "0100019419336b0b-3493fde0-01bf-4bd5-9738-7f58f4392463-000000@email.amazonses.com",
+          "010001941938c2b4-4c4c82af-af7e-4bf7-bf30-044324c12d88-000000@email.amazonses.com",
+          "01000194193b156d-7fe28033-02de-4703-8a47-84e5dfb7be0d-000000@email.amazonses.com",
+          "010001944797e31a-5c05c714-26fe-45a4-8a6b-5470ea6fd8d0-000000@email.amazonses.com"
+        ],
+        "app_email_integration__email_subject": "Offboarding Guidelines",
+        "app_email_integration__external_source_id": "CA+T=yOchXx_99HY+QJXy_-85EUcibvVR3uRiZUF_midew8pj9g@mail.gmail.com",
+        "app_email_integration__members": [
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/1821",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/896",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/287"
+        ],
+        "app_email_integration__received_on": "usa-cx@velocityglobal.com",
+        "ctype__reporter_role": "Internal",
+        "tnt__ai_assigned_part": "don:core:dvrv-us-1:devo/ye4F1cYu:capability/213",
+        "tnt__countries": [
+          "Australia"
+        ],
+        "tnt__regions": [
+          "APAC",
+          "Americas"
+        ],
+        "tnt__sub_regions": [
+          "Oceania",
+          "United States of America"
+        ],
+        "tnt__visible_to": [
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/1821",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/287",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/340",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/364",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/896"
+        ],
+        "tnt__work_duration": "239.09 hours",
+        "tnt__work_duration_counter": 860710558
+      },
+      "custom_schema_fragments": [
+        "don:core:dvrv-us-1:devo/ye4F1cYu:tenant_fragment/8177",
+        "don:core:dvrv-us-1:devo/ye4F1cYu:app_fragment/9319",
+        "don:core:dvrv-us-1:devo/ye4F1cYu:custom_type_fragment/25529"
+      ],
+      "display_id": "TKT-1272640",
+      "id": "don:core:dvrv-us-1:devo/ye4F1cYu:ticket/1272640",
+      "modified_by": {
+        "type": "service_account",
+        "display_id": "SVCACC-12",
+        "display_name": "FollowUp Bot",
+        "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:svcacc/12",
+        "state": "active"
+      },
+      "modified_date": "2025-01-13T20:32:11.341Z",
+      "needs_response": false,
+      "owned_by": [
+        {
+          "type": "dev_user",
+          "display_id": "DEVU-287",
+          "display_name": "amyhess",
+          "display_picture": {
+            "display_id": "artifact-2162686",
+            "id": "don:core:dvrv-us-1:devo/ye4F1cYu:artifact/2162686"
+          },
+          "email": "amyhess@velocityglobal.com",
+          "full_name": "Amy Hess",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/287",
+          "state": "active"
+        }
+      ],
+      "reported_by": [
+        {
+          "type": "rev_user",
+          "display_id": "REVU-16BD3ZzTw",
+          "display_name": "Amy Hess",
+          "email": "amyhess@velocityglobal.com",
+          "external_ref": "REVU-16BD3ZzTw",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/16BD3ZzTw",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        },
+        {
+          "type": "rev_user",
+          "display_id": "REVU-1EMVRXClJ",
+          "display_name": "Angelica Paz",
+          "email": "angelicapaz@velocityglobal.com",
+          "external_ref": "user_3Xq1eK1vCtnz0vv4eiWK5M",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/1EMVRXClJ",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        }
+      ],
+      "rev_org": {
+        "type": "rev_org",
+        "display_id": "REV-15708Y21",
+        "display_name": "Velocity Global - Internal",
+        "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+      },
+      "severity": "low",
+      "source_channel": "email",
+      "stage": {
+        "name": "archived",
+        "ordinal": 6700,
+        "stage": {
+          "id": "don:core:dvrv-us-1:devo/ye4F1cYu:custom_stage/65",
+          "name": "archived"
+        },
+        "state": {
+          "id": "don:core:dvrv-us-1:devo/ye4F1cYu:custom_state/3",
+          "is_final": true,
+          "name": "closed"
+        }
+      },
+      "stock_schema_fragment": "don:core:dvrv-us-1:stock_sf/1337872",
+      "subtype": "internal",
+      "tags": [
+        {
+          "tag": {
+            "display_id": "TAG-10548",
+            "id": "don:core:dvrv-us-1:devo/ye4F1cYu:tag/10548",
+            "name": "support@velocityglobal.com"
+          }
+        }
+      ],
+      "title": "Offboarding Guidelines"
+    },
+    {
+      "type": "ticket",
+      "actual_close_date": "2024-12-12T16:33:38.309Z",
+      "applies_to_part": {
+        "type": "product",
+        "display_id": "PROD-42",
+        "id": "don:core:dvrv-us-1:devo/ye4F1cYu:product/42",
+        "name": "Employee Onboarding",
+        "owned_by": [
+          {
+            "type": "dev_user",
+            "display_id": "DEVU-1780",
+            "display_name": "Velocity Global",
+            "email": "devrevadmin@velocityglobal.com",
+            "full_name": "Velocity Global Bot",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/1780",
+            "state": "active"
+          }
+        ]
+      },
+      "body": "A new employee, Michele Lavern Roberson, is being onboarded for UUL Global Co. in the USA. The US Team needs to create her record in eRecruit, while the Client Finance Team should generate a deposit invoice after confirmation. Key details include a salary of $55,000 and a 20% deposit requirement.",
+      "channels": [
+        "email"
+      ],
+      "created_by": {
+        "type": "service_account",
+        "display_id": "SVCACC-11",
+        "display_name": "Email Integration Bot",
+        "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:svcacc/11",
+        "state": "active"
+      },
+      "created_date": "2024-12-10T15:58:16.704Z",
+      "custom_fields": {
+        "app_email_integration__auto_response_suppress": "none",
+        "app_email_integration__email_references": [
+          "CAHfp0qZaaifXX9y07+n2S0VrSUHJNaXsQfoKFHOaXc6ZqojBxA@mail.gmail.com",
+          "CAJN0=+vqyMRddLabtOwVu3fiJB+PmgNDnJnQyf-qyEeaiUqHjw@mail.gmail.com",
+          "01000193b1b7e3e1-97f16191-23a6-4a6d-be70-c284f4dd310c-000000@email.amazonses.com",
+          "01000193bbb793fd-0901e48f-9619-46d6-a6a4-471c0a4a8bed-000000@email.amazonses.com"
+        ],
+        "app_email_integration__email_subject": "Fwd: New USA EE Onboarding - UUL Global Co. - Michele Lavern Roberson",
+        "app_email_integration__external_source_id": "CAHfp0qZaaifXX9y07+n2S0VrSUHJNaXsQfoKFHOaXc6ZqojBxA@mail.gmail.com",
+        "app_email_integration__members": [
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/796",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/1816",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/1724",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/335",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/287",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/149",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/408"
+        ],
+        "app_email_integration__received_on": "usa-cx@velocityglobal.com",
+        "tnt__ai_assigned_part": "don:core:dvrv-us-1:devo/ye4F1cYu:product/42",
+        "tnt__countries": [
+          "United States of America"
+        ],
+        "tnt__regions": [
+          "Americas"
+        ],
+        "tnt__sub_regions": [
+          "United States of America"
+        ],
+        "tnt__visible_to": [
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/149",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/1724",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/1816",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/287",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/335",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/337",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/408",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/796"
+        ],
+        "tnt__work_duration": "48.59 hours",
+        "tnt__work_duration_counter": 174921605
+      },
+      "custom_schema_fragments": [
+        "don:core:dvrv-us-1:devo/ye4F1cYu:app_fragment/9319",
+        "don:core:dvrv-us-1:devo/ye4F1cYu:custom_type_fragment/25529",
+        "don:core:dvrv-us-1:devo/ye4F1cYu:tenant_fragment/8177"
+      ],
+      "display_id": "TKT-1262717",
+      "group": {
+        "display_id": "group-110",
+        "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:group/110",
+        "member_type": "dev_user",
+        "name": "Invoicing & AR"
+      },
+      "id": "don:core:dvrv-us-1:devo/ye4F1cYu:ticket/1262717",
+      "modified_by": {
+        "type": "service_account",
+        "display_id": "SVCACC-12",
+        "display_name": "FollowUp Bot",
+        "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:svcacc/12",
+        "state": "active"
+      },
+      "modified_date": "2024-12-26T16:33:38.881Z",
+      "needs_response": false,
+      "owned_by": [
+        {
+          "type": "dev_user",
+          "display_id": "DEVU-337",
+          "display_name": "santiagohurtado",
+          "display_picture": {
+            "display_id": "artifact-2524958",
+            "id": "don:core:dvrv-us-1:devo/ye4F1cYu:artifact/2524958"
+          },
+          "email": "santiagohurtado@velocityglobal.com",
+          "full_name": "Santiago Hurtado ",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/337",
+          "state": "active"
+        }
+      ],
+      "reported_by": [
+        {
+          "type": "rev_user",
+          "display_id": "REVU-HwcBlaLJ",
+          "display_name": "amyhess@velocityglobal.com",
+          "email": "amyhess@velocityglobal.com",
+          "external_ref": "user_u1b1b1d1esrm1d1b1cnqrp",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/HwcBlaLJ",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        },
+        {
+          "type": "rev_user",
+          "display_id": "REVU-Fq5Wll4z",
+          "display_name": "Katja Bloem-Moretti",
+          "email": "katjabloemmoretti@velocityglobal.com",
+          "external_ref": "user_mp1a1cmq1e1Zsu1bsqs1dv",
+          "full_name": "Katjabloem-moretti",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/Fq5Wll4z",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        },
+        {
+          "type": "rev_user",
+          "display_id": "REVU-GpmjaK98",
+          "display_name": "Idalia A Diaz",
+          "email": "alexdiaz@velocityglobal.com",
+          "external_ref": "REVU-GpmjaK98",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/GpmjaK98",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        },
+        {
+          "type": "rev_user",
+          "display_id": "REVU-16BD3ZzTw",
+          "display_name": "Amy Hess",
+          "email": "amyhess@velocityglobal.com",
+          "external_ref": "REVU-16BD3ZzTw",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/16BD3ZzTw",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        },
+        {
+          "type": "rev_user",
+          "display_id": "REVU-6AMoJCDS",
+          "display_name": "Maxwell Norman Thompson Carter",
+          "email": "maxcarter@velocityglobal.com",
+          "external_ref": "REVU-6AMoJCDS",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/6AMoJCDS",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        },
+        {
+          "type": "rev_user",
+          "display_id": "REVU-qvE1lO0d",
+          "display_name": "Maricela Krewson",
+          "email": "maricelakrewson@velocityglobal.com",
+          "external_ref": "maricelakrewson@velocityglobal.com",
+          "full_name": "Maricela Krewson",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/qvE1lO0d",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        },
+        {
+          "type": "rev_user",
+          "display_id": "REVU-QmVuG5KR",
+          "display_name": "dos-team",
+          "email": "dos-team@velocityglobal.com",
+          "external_ref": "dos-team@velocityglobal.com",
+          "full_name": "dos-team",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/QmVuG5KR",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        }
+      ],
+      "rev_org": {
+        "type": "rev_org",
+        "display_id": "REV-15708Y21",
+        "display_name": "Velocity Global - Internal",
+        "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+      },
+      "severity": "low",
+      "source_channel": "email",
+      "stage": {
+        "name": "archived",
+        "ordinal": 6700,
+        "stage": {
+          "id": "don:core:dvrv-us-1:devo/ye4F1cYu:custom_stage/65",
+          "name": "archived"
+        },
+        "state": {
+          "id": "don:core:dvrv-us-1:devo/ye4F1cYu:custom_state/3",
+          "is_final": true,
+          "name": "closed"
+        }
+      },
+      "stock_schema_fragment": "don:core:dvrv-us-1:stock_sf/1337872",
+      "subtype": "internal",
+      "tags": [
+        {
+          "tag": {
+            "display_id": "TAG-10548",
+            "id": "don:core:dvrv-us-1:devo/ye4F1cYu:tag/10548",
+            "name": "support@velocityglobal.com"
+          }
+        }
+      ],
+      "title": "New USA EE Onboarding - UUL Global Co. - Michele Lavern Roberson"
+    },
+    {
+      "type": "ticket",
+      "actual_close_date": "2024-10-28T19:55:06.035Z",
+      "applies_to_part": {
+        "type": "product",
+        "display_id": "PROD-42",
+        "id": "don:core:dvrv-us-1:devo/ye4F1cYu:product/42",
+        "name": "Employee Onboarding",
+        "owned_by": [
+          {
+            "type": "dev_user",
+            "display_id": "DEVU-1780",
+            "display_name": "Velocity Global",
+            "email": "devrevadmin@velocityglobal.com",
+            "full_name": "Velocity Global Bot",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/1780",
+            "state": "active"
+          }
+        ]
+      },
+      "body": "A new employee, Brant Wahlman, is being onboarded for Orient Global Services Pte. The US team is tasked with creating the employee record in eRecruit, while the Client Finance Team will generate a deposit invoice after confirmation. The employment details and fee structure are outlined.",
+      "channels": [
+        "email"
+      ],
+      "created_by": {
+        "type": "service_account",
+        "display_id": "SVCACC-11",
+        "display_name": "Email Integration Bot",
+        "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:svcacc/11",
+        "state": "active"
+      },
+      "created_date": "2024-10-25T06:07:17.599Z",
+      "custom_fields": {
+        "app_email_integration__auto_response_suppress": "none",
+        "app_email_integration__email_references": [
+          "CAOnPwSLOh8L1H3LBUngYU6_ck79+0qSQQa3+zw8Czn=qqu-7aw@mail.gmail.com",
+          "01000192c4475125-589097e5-f2c7-477a-9548-294aec7c3a2e-000000@email.amazonses.com",
+          "01000192c45672a8-324fb3a6-01e9-4425-8215-966c27e8a39e-000000@email.amazonses.com",
+          "01000192c57ddcde-23309b83-b623-4b10-ba33-28aebdf18e6e-000000@email.amazonses.com"
+        ],
+        "app_email_integration__email_subject": "New USA EE Onboarding - Orient Global Services Pte. - Brant Wahlman",
+        "app_email_integration__external_source_id": "CAOnPwSLOh8L1H3LBUngYU6_ck79+0qSQQa3+zw8Czn=qqu-7aw@mail.gmail.com",
+        "app_email_integration__members": [
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/872",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/1724",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/253",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/149",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/459",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/1816",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/335"
+        ],
+        "app_email_integration__received_on": "support@velocityglobal.com",
+        "tnt__countries": [
+          "United States of America"
+        ],
+        "tnt__regions": [
+          "Americas"
+        ],
+        "tnt__sub_regions": [
+          "United States of America"
+        ],
+        "tnt__ticket_reference": "TKT-1221537",
+        "tnt__visible_to": [
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/149",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/1724",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/1816",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/253",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/335",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/459",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/496",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/872"
+        ],
+        "tnt__work_duration": "85.80 hours",
+        "tnt__work_duration_counter": 308868436
+      },
+      "custom_schema_fragments": [
+        "don:core:dvrv-us-1:devo/ye4F1cYu:tenant_fragment/8177",
+        "don:core:dvrv-us-1:devo/ye4F1cYu:app_fragment/9319",
+        "don:core:dvrv-us-1:devo/ye4F1cYu:custom_type_fragment/25529"
+      ],
+      "display_id": "TKT-1219278",
+      "group": {
+        "display_id": "group-110",
+        "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:group/110",
+        "member_type": "dev_user",
+        "name": "Invoicing & AR"
+      },
+      "id": "don:core:dvrv-us-1:devo/ye4F1cYu:ticket/1219278",
+      "modified_by": {
+        "type": "service_account",
+        "display_id": "SVCACC-12",
+        "display_name": "FollowUp Bot",
+        "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:svcacc/12",
+        "state": "active"
+      },
+      "modified_date": "2024-11-11T19:55:07.209Z",
+      "needs_response": false,
+      "owned_by": [
+        {
+          "type": "dev_user",
+          "display_id": "DEVU-496",
+          "display_name": "mariaalejandravargas",
+          "display_picture": {
+            "display_id": "artifact-2512190",
+            "id": "don:core:dvrv-us-1:devo/ye4F1cYu:artifact/2512190"
+          },
+          "email": "mariaalejandravargas@velocityglobal.com",
+          "full_name": "Maria Alejandra Vargas ",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/496",
+          "state": "active"
+        }
+      ],
+      "reported_by": [
+        {
+          "type": "rev_user",
+          "display_id": "REVU-1HV7wfgGK",
+          "display_name": "Amy White",
+          "email": "amywhite@velocityglobal.com",
+          "external_ref": "REVU-1HV7wfgGK",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/1HV7wfgGK",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        },
+        {
+          "type": "rev_user",
+          "display_id": "REVU-16BD3ZzTw",
+          "display_name": "Amy Hess",
+          "email": "amyhess@velocityglobal.com",
+          "external_ref": "REVU-16BD3ZzTw",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/16BD3ZzTw",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        },
+        {
+          "type": "rev_user",
+          "display_id": "REVU-Fq5Wll4z",
+          "display_name": "Katja Bloem-Moretti",
+          "email": "katjabloemmoretti@velocityglobal.com",
+          "external_ref": "user_mp1a1cmq1e1Zsu1bsqs1dv",
+          "full_name": "Katjabloem-moretti",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/Fq5Wll4z",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        },
+        {
+          "type": "rev_user",
+          "display_id": "REVU-1CRakD5It",
+          "display_name": "Andrey Puzanov",
+          "email": "andreypuzanov@velocityglobal.com",
+          "external_ref": "user_qs1brus1a1br1dnpqmspvp",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/1CRakD5It",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        },
+        {
+          "type": "rev_user",
+          "display_id": "REVU-VzwTBSgU",
+          "display_name": "Carla-Beth Lee",
+          "email": "carlalee@velocityglobal.com",
+          "external_ref": "carlalee@velocityglobal.com",
+          "full_name": "Carla Lee",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/VzwTBSgU",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        },
+        {
+          "type": "rev_user",
+          "display_id": "REVU-GpmjaK98",
+          "display_name": "Idalia A Diaz",
+          "email": "alexdiaz@velocityglobal.com",
+          "external_ref": "REVU-GpmjaK98",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/GpmjaK98",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        },
+        {
+          "type": "rev_user",
+          "display_id": "REVU-QmVuG5KR",
+          "display_name": "dos-team",
+          "email": "dos-team@velocityglobal.com",
+          "external_ref": "dos-team@velocityglobal.com",
+          "full_name": "dos-team",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/QmVuG5KR",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        }
+      ],
+      "rev_org": {
+        "type": "rev_org",
+        "display_id": "REV-15708Y21",
+        "display_name": "Velocity Global - Internal",
+        "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+      },
+      "severity": "medium",
+      "source_channel": "email",
+      "stage": {
+        "name": "archived",
+        "ordinal": 6700,
+        "stage": {
+          "id": "don:core:dvrv-us-1:devo/ye4F1cYu:custom_stage/65",
+          "name": "archived"
+        },
+        "state": {
+          "id": "don:core:dvrv-us-1:devo/ye4F1cYu:custom_state/3",
+          "is_final": true,
+          "name": "closed"
+        }
+      },
+      "stock_schema_fragment": "don:core:dvrv-us-1:stock_sf/1337872",
+      "subtype": "internal",
+      "tags": [
+        {
+          "tag": {
+            "display_id": "TAG-10324",
+            "id": "don:core:dvrv-us-1:devo/ye4F1cYu:tag/10324",
+            "name": "usa-cx@velocityglobal.com"
+          }
+        },
+        {
+          "tag": {
+            "display_id": "TAG-10414",
+            "id": "don:core:dvrv-us-1:devo/ye4F1cYu:tag/10414",
+            "name": "usa-cx"
+          }
+        }
+      ],
+      "title": "New USA EE Onboarding - Orient Global Services Pte. - Brant Wahlman"
+    },
+    {
+      "type": "ticket",
+      "actual_close_date": "2024-10-03T14:08:01.841Z",
+      "applies_to_part": {
+        "type": "product",
+        "display_id": "PROD-42",
+        "id": "don:core:dvrv-us-1:devo/ye4F1cYu:product/42",
+        "name": "Employee Onboarding",
+        "owned_by": [
+          {
+            "type": "dev_user",
+            "display_id": "DEVU-1780",
+            "display_name": "Velocity Global",
+            "email": "devrevadmin@velocityglobal.com",
+            "full_name": "Velocity Global Bot",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/1780",
+            "state": "active"
+          }
+        ]
+      },
+      "body": "Corinne Wiggins is a new USA supported worker for Noble Panacea, requiring an employee record in eRecruit and a deposit invoice from the Client Finance Team. The job title is Beauty Advisor with a salary of $40/hour for 10 hours a week.",
+      "channels": [
+        "email"
+      ],
+      "created_by": {
+        "type": "service_account",
+        "display_id": "SVCACC-11",
+        "display_name": "Email Integration Bot",
+        "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:svcacc/11",
+        "state": "active"
+      },
+      "created_date": "2024-10-02T09:18:30.399Z",
+      "custom_fields": {
+        "app_csat__send_survey": false,
+        "app_email_integration__auto_response_suppress": "none",
+        "app_email_integration__email_references": [
+          "CAOnPwS+w5opAdnTox-dz1UdLp9WHvJ5pvxu3CfTeyOmcCrkSGg@mail.gmail.com",
+          "010001924e8a4e7d-91cc133f-e55e-43b7-8ba1-81ebfc9b4eac-000000@email.amazonses.com",
+          "0100019252b58070-4f1b209d-d67e-41e5-b875-2a47130427c3-000000@email.amazonses.com",
+          "CAOnPwSJhTu_kHK7Yv2YugVcvyvN5zi-hUbR4Si7z99dJP=XXkg@mail.gmail.com"
+        ],
+        "app_email_integration__email_subject": "New USA EE Onboarding - Noble Panacea - Wiggins, Corinne",
+        "app_email_integration__external_source_id": "CAOnPwS+w5opAdnTox-dz1UdLp9WHvJ5pvxu3CfTeyOmcCrkSGg@mail.gmail.com",
+        "app_email_integration__members": [
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/872",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/1724",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/967",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/1816",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/149",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/459",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/335",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/287",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/428"
+        ],
+        "app_email_integration__received_on": "support@velocityglobal.com",
+        "tnt__countries": [
+          "United States of America"
+        ],
+        "tnt__regions": [
+          "Americas"
+        ],
+        "tnt__sub_regions": [
+          "United States of America"
+        ],
+        "tnt__ticket_reference": "TKT-1198749",
+        "tnt__visible_to": [
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/149",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/1724",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/1816",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/287",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/335",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/428",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/459",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/496",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/872",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/967"
+        ],
+        "tnt__work_duration": "28.83 hours",
+        "tnt__work_duration_counter": 103771442
+      },
+      "custom_schema_fragments": [
+        "don:core:dvrv-us-1:devo/ye4F1cYu:app_fragment/2",
+        "don:core:dvrv-us-1:devo/ye4F1cYu:tenant_fragment/8177",
+        "don:core:dvrv-us-1:devo/ye4F1cYu:custom_type_fragment/25551",
+        "don:core:dvrv-us-1:devo/ye4F1cYu:app_fragment/9319"
+      ],
+      "display_id": "TKT-1197452",
+      "group": {
+        "display_id": "group-110",
+        "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:group/110",
+        "member_type": "dev_user",
+        "name": "Invoicing & AR"
+      },
+      "id": "don:core:dvrv-us-1:devo/ye4F1cYu:ticket/1197452",
+      "modified_by": {
+        "type": "service_account",
+        "display_id": "SVCACC-162",
+        "display_name": "Mirror Subscribers Bot",
+        "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:svcacc/162",
+        "state": "active"
+      },
+      "modified_date": "2024-11-08T21:06:40.838Z",
+      "needs_response": false,
+      "owned_by": [
+        {
+          "type": "dev_user",
+          "display_id": "DEVU-496",
+          "display_name": "mariaalejandravargas",
+          "display_picture": {
+            "display_id": "artifact-2512190",
+            "id": "don:core:dvrv-us-1:devo/ye4F1cYu:artifact/2512190"
+          },
+          "email": "mariaalejandravargas@velocityglobal.com",
+          "full_name": "Maria Alejandra Vargas ",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/496",
+          "state": "active"
+        }
+      ],
+      "reported_by": [
+        {
+          "type": "rev_user",
+          "display_id": "REVU-1GAFPoR1q",
+          "display_name": "Blanca Stephanie Ramirez",
+          "email": "blancaramirez@velocityglobal.com",
+          "external_ref": "REVU-1GAFPoR1q",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/1GAFPoR1q",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        },
+        {
+          "type": "rev_user",
+          "display_id": "REVU-KxzlLMR6",
+          "display_name": "Matthew J Presti",
+          "email": "mattpresti@velocityglobal.com",
+          "external_ref": "user_n1a1bmo1d1Z1dn1epvqsn1",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/KxzlLMR6",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        },
+        {
+          "type": "rev_user",
+          "display_id": "REVU-VzwTBSgU",
+          "display_name": "Carla-Beth Lee",
+          "email": "carlalee@velocityglobal.com",
+          "external_ref": "carlalee@velocityglobal.com",
+          "full_name": "Carla Lee",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/VzwTBSgU",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        },
+        {
+          "type": "rev_user",
+          "display_id": "REVU-GpmjaK98",
+          "display_name": "Idalia A Diaz",
+          "email": "alexdiaz@velocityglobal.com",
+          "external_ref": "REVU-GpmjaK98",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/GpmjaK98",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        },
+        {
+          "type": "rev_user",
+          "display_id": "REVU-16BD3ZzTw",
+          "display_name": "Amy Hess",
+          "email": "amyhess@velocityglobal.com",
+          "external_ref": "REVU-16BD3ZzTw",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/16BD3ZzTw",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        },
+        {
+          "type": "rev_user",
+          "display_id": "REVU-1HV7wfgGK",
+          "display_name": "Amy White",
+          "email": "amywhite@velocityglobal.com",
+          "external_ref": "REVU-1HV7wfgGK",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/1HV7wfgGK",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        },
+        {
+          "type": "rev_user",
+          "display_id": "REVU-QmVuG5KR",
+          "display_name": "dos-team",
+          "email": "dos-team@velocityglobal.com",
+          "external_ref": "dos-team@velocityglobal.com",
+          "full_name": "dos-team",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/QmVuG5KR",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        }
+      ],
+      "rev_org": {
+        "type": "rev_org",
+        "display_id": "REV-15708Y21",
+        "display_name": "Velocity Global - Internal",
+        "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+      },
+      "severity": "medium",
+      "source_channel": "email",
+      "stage": {
+        "name": "archived",
+        "ordinal": 6700,
+        "stage": {
+          "id": "don:core:dvrv-us-1:devo/ye4F1cYu:custom_stage/65",
+          "name": "archived"
+        },
+        "state": {
+          "id": "don:core:dvrv-us-1:devo/ye4F1cYu:custom_state/3",
+          "is_final": true,
+          "name": "closed"
+        }
+      },
+      "stock_schema_fragment": "don:core:dvrv-us-1:stock_sf/1337872",
+      "subtype": "notifications",
+      "tags": [
+        {
+          "tag": {
+            "display_id": "TAG-10324",
+            "id": "don:core:dvrv-us-1:devo/ye4F1cYu:tag/10324",
+            "name": "usa-cx@velocityglobal.com"
+          }
+        },
+        {
+          "tag": {
+            "display_id": "TAG-10414",
+            "id": "don:core:dvrv-us-1:devo/ye4F1cYu:tag/10414",
+            "name": "usa-cx"
+          }
+        }
+      ],
+      "title": "New USA EE Onboarding - Noble Panacea - Wiggins, Corinne"
+    },
+    {
+      "type": "issue",
+      "actual_close_date": "2024-08-08T15:30:59.339Z",
+      "actual_start_date": "2024-08-07T23:39:23.806Z",
+      "applies_to_part": {
+        "type": "capability",
+        "display_id": "CAPL-144",
+        "id": "don:core:dvrv-us-1:devo/ye4F1cYu:capability/144",
+        "name": "Contractor Offboarding",
+        "owned_by": [
+          {
+            "type": "dev_user",
+            "display_id": "DEVU-1780",
+            "display_name": "Velocity Global",
+            "email": "devrevadmin@velocityglobal.com",
+            "full_name": "Velocity Global Bot",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/1780",
+            "state": "active"
+          }
+        ]
+      },
+      "body": "Summary: George Armentrout's project ended on 7/19. Request to close him out. Contact Harry Chen at [HChen@arrayasolutions.com](mailto:HChen@arrayasolutions.com) for assistance.",
+      "created_by": {
+        "type": "dev_user",
+        "display_id": "DEVU-287",
+        "display_name": "amyhess",
+        "display_picture": {
+          "display_id": "artifact-2162686",
+          "id": "don:core:dvrv-us-1:devo/ye4F1cYu:artifact/2162686"
+        },
+        "email": "amyhess@velocityglobal.com",
+        "full_name": "Amy Hess",
+        "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/287",
+        "state": "active"
+      },
+      "created_date": "2024-08-07T22:41:27.367Z",
+      "custom_fields": {
+        "tnt__countries": [
+          "United States of America"
+        ],
+        "tnt__creator_group": "don:identity:dvrv-us-1:devo/ye4F1cYu:group/124",
+        "tnt__group": "don:identity:dvrv-us-1:devo/ye4F1cYu:group/125",
+        "tnt__regions": [
+          "Americas"
+        ],
+        "tnt__sub_regions": [
+          "United States of America"
+        ],
+        "tnt__visible_to": [
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/1780",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/287",
+          "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/437"
+        ],
+        "tnt__work_duration": "16.83 hours",
+        "tnt__work_duration_counter": 60571972
+      },
+      "custom_schema_fragments": [
+        "don:core:dvrv-us-1:devo/ye4F1cYu:tenant_fragment/8176"
+      ],
+      "display_id": "ISS-17584",
+      "id": "don:core:dvrv-us-1:devo/ye4F1cYu:issue/17584",
+      "modified_by": {
+        "type": "dev_user",
+        "display_id": "DEVU-1704",
+        "display_name": "Victor Cuerdo",
+        "display_picture": {
+          "display_id": "artifact-2511935",
+          "id": "don:core:dvrv-us-1:devo/ye4F1cYu:artifact/2511935"
+        },
+        "email": "victorcuerdo@velocityglobal.com",
+        "full_name": "Victor Cuerdo",
+        "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/1704",
+        "state": "active"
+      },
+      "modified_date": "2025-01-12T23:36:33.601Z",
+      "owned_by": [
+        {
+          "type": "dev_user",
+          "display_id": "DEVU-437",
+          "display_name": "davidlee",
+          "display_picture": {
+            "display_id": "artifact-2156718",
+            "id": "don:core:dvrv-us-1:devo/ye4F1cYu:artifact/2156718"
+          },
+          "email": "davidlee@velocityglobal.com",
+          "full_name": "David Lee",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/437",
+          "state": "active"
+        }
+      ],
+      "priority": "p2",
+      "reported_by": [
+        {
+          "type": "rev_user",
+          "display_id": "REVU-16BD3ZzTw",
+          "display_name": "Amy Hess",
+          "email": "amyhess@velocityglobal.com",
+          "external_ref": "REVU-16BD3ZzTw",
+          "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/16BD3ZzTw",
+          "rev_org": {
+            "type": "rev_org",
+            "display_id": "REV-15708Y21",
+            "display_name": "Velocity Global - Internal",
+            "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+          },
+          "state": "active"
+        }
+      ],
+      "stage": {
+        "name": "completed",
+        "notes": "",
+        "ordinal": 8000,
+        "stage": {
+          "id": "don:core:dvrv-us-1:devo/ye4F1cYu:custom_stage/16",
+          "name": "completed"
+        },
+        "state": {
+          "id": "don:core:dvrv-us-1:devo/ye4F1cYu:custom_state/3",
+          "is_final": true,
+          "name": "closed"
+        }
+      },
+      "stock_schema_fragment": "don:core:dvrv-us-1:stock_sf/1337873",
+      "tags": [
+        {
+          "tag": {
+            "display_id": "TAG-10324",
+            "id": "don:core:dvrv-us-1:devo/ye4F1cYu:tag/10324",
+            "name": "usa-cx@velocityglobal.com"
+          }
+        },
+        {
+          "tag": {
+            "display_id": "TAG-10414",
+            "id": "don:core:dvrv-us-1:devo/ye4F1cYu:tag/10414",
+            "name": "usa-cx"
+          }
+        }
+      ],
+      "title": "EX request to Off Board / George Armentrout - Arraya - end date 7/19/24"
+    }
+  ]
+}

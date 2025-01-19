@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Merge Report - 2025-01-19 06:20:22</title>
+  <style>
+    body { font-family: monospace; margin: 20px; }
+    h1 { color: #333; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background-color: #f4f4f4; }
+    .success { color: green; }
+    .failure { color: red; }
+    .record-number { color: #E91E63; font-weight: bold; font-size: 1.4em; }
+    .ref-1 { color: #2196F3; }
+    .ref-2 { color: #FF9800; }
+    /* Colors for specific log lines */
+    .found { color: green; font-size: 1.4em;font-weight: bold; }
+    .primary-log { color: green; }
+    .duplicate-log { color: red; }
+    pre {
+      background: #f8f8f8;
+      padding: 10px;
+      border: 1px solid #ccc;
+      overflow-x: auto;
+      white-space: pre;
+      margin: 0;
+      font-size: 0.95em;
+    }
+    .log-line { display: inline; }
+  </style>
+</head>
+<body>
+  <h1>Contact Merge Report</h1>
+  <p><strong>Date:</strong> 2025-01-19 06:20:22</p>
+
+  <h2>Summary</h2>
+  <ul>
+    <li>Total Merges Attempted: 1</li>
+    <li class="success">Successful Merges: 1</li>
+    <li class="failure">Failed Merges: 0</li>
+  </ul>
+
+  <h2>Successful Merges</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Primary Name</th>
+          <th>Primary Email</th>
+          <th>Duplicate Name</th>
+          <th>Duplicate Email</th>
+          <th>Original Ticket Count</th>
+          <th>Final Ticket Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Stefania Maria Anna Cagnetta</td>
+          <td>stefaniacagnetta@velocityglobal.com</td>
+          <td>stefaniacagnetta@velocityglobal.com</td>
+          <td>stefaniacagnetta@velocityglobal.com</td>
+          <td>0</td>
+          <td>0</td>
+        </tr>
+      </tbody>
+    </table>
+
+  <h2>Failed Merges</h2>
+    <p>No failed merges.</p>
+
+  <h2>Log Details</h2>
+  <pre><span class="log-line">2025-01-19 06:20:17,329 - INFO - Starting contact merge process...</span>
+<span class="log-line">2025-01-19 06:20:17,329 - INFO - CSV file: contacts.csv</span>
+<span class="log-line">2025-01-19 06:20:17,329 - INFO - Preview mode: False</span>
+<span class="log-line">2025-01-19 06:20:17,335 - INFO - Email: stefaniacagnetta@velocityglobal.com has <span class="record-number">2</span> record(s)</span>
+<span class="log-line">2025-01-19 06:20:17,335 - INFO -</span>
+<span class="log-line found">Found 1 duplicate pairs to process</span>
+<span class="log-line">2025-01-19 06:20:17,335 - INFO -</span>
+<span class="log-line">Processing pair 1/1</span>
+<span class="log-line">2025-01-19 06:20:17,335 - INFO -</span>
+<span class="log-line">Merging contacts for email stefaniacagnetta@velocityglobal.com</span>
+<span class="log-line primary-log">2025-01-19 06:20:17,335 - INFO - Primary: Stefania Maria Anna Cagnetta (don:identity:dvrv-us-1:devo/ye4F1cYu:revu/1GoxOkOI7)</span>
+<span class="log-line duplicate-log">2025-01-19 06:20:17,335 - INFO - Duplicate: stefaniacagnetta@velocityglobal.com (don:identity:dvrv-us-1:devo/ye4F1cYu:revu/19frIGXNH)</span>
+<span class="log-line">2025-01-19 06:20:17,335 - INFO - Backing up contact data...</span>
+<span class="log-line">2025-01-19 06:20:18,359 - INFO - ✓ Backed up data for contact stefaniacagnetta@velocityglobal.com to backups/stefaniacagnetta@velocityglobal.com_20250119_062017</span>
+<span class="log-line">2025-01-19 06:20:19,286 - INFO - ✓ Backed up data for contact stefaniacagnetta@velocityglobal.com to backups/stefaniacagnetta@velocityglobal.com_20250119_062018</span>
+<span class="log-line">2025-01-19 06:20:19,287 - INFO - Backup integrity verification passed.</span>
+<span class="log-line">2025-01-19 06:20:19,671 - INFO - Successfully merged don:identity:dvrv-us-1:devo/ye4F1cYu:revu/19frIGXNH into don:identity:dvrv-us-1:devo/ye4F1cYu:revu/1GoxOkOI7</span>
+<span class="log-line">2025-01-19 06:20:22,015 - INFO - Successfully updated external_ref for don:identity:dvrv-us-1:devo/ye4F1cYu:revu/1GoxOkOI7 to user_put1a1an1a1Ztp1e1dqrru</span>
+<span class="log-line">2025-01-19 06:20:22,017 - INFO - ✓ Merge completed successfully (with forced external_ref overwrite)</span>
+<span class="log-line">2025-01-19 06:20:22,018 - INFO - Generated JSON report: reports/merge_report_20250119_062022.json</span>
+</pre>
+</body>
+</html>

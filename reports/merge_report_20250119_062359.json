@@ -1,0 +1,28 @@
+{
+  "summary": {
+    "total_merges_attempted": 1,
+    "successful_merges": 1,
+    "failed_merges": 0
+  },
+  "successful_merges": [
+    {
+      "primary": {
+        "display_name": "Ling Sing (Sharon) Tang",
+        "email": "sharontang@velocityglobal.com",
+        "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/cquvm4zx",
+        "original_external_ref": "REVU-cquvm4zx",
+        "new_external_ref": "user_qsnnon1dsm1duuqtn1d1Zn",
+        "original_ticket_count": 1,
+        "final_ticket_count": 3
+      },
+      "duplicate": {
+        "display_name": "sharontang@velocityglobal.com",
+        "email": "sharontang@velocityglobal.com",
+        "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/9eHze6AH",
+        "external_ref": "user_qsnnon1dsm1duuqtn1d1Zn",
+        "ticket_count": 2
+      }
+    }
+  ],
+  "failed_merges": []
+}

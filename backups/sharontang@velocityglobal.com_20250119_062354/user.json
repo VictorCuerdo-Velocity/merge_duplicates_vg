@@ -1,0 +1,75 @@
+{
+  "rev_user": {
+    "created_by": {
+      "type": "dev_user",
+      "display_id": "DEVU-1731",
+      "display_name": "Coulter",
+      "display_picture": {
+        "display_id": "artifact-2156716",
+        "id": "don:core:dvrv-us-1:devo/ye4F1cYu:artifact/2156716"
+      },
+      "email": "coultershelby@velocityglobal.com",
+      "full_name": "Coultershelby",
+      "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:devu/1731",
+      "state": "active"
+    },
+    "created_date": "2024-07-11T15:59:37.002Z",
+    "custom_fields": {
+      "tnt__notification_contact": false,
+      "tnt__routing_subtype": "Notifications",
+      "tnt__stage_assignment": "Queued",
+      "tnt__type": [
+        "Internal"
+      ]
+    },
+    "custom_schema_fragments": [
+      "don:core:dvrv-us-1:devo/ye4F1cYu:tenant_fragment/8145"
+    ],
+    "display_id": "REVU-cquvm4zx",
+    "display_name": "Ling Sing (Sharon) Tang",
+    "email": "sharontang@velocityglobal.com",
+    "external_ref": "REVU-cquvm4zx",
+    "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revu/cquvm4zx",
+    "is_verified": true,
+    "modified_by": {
+      "type": "sys_user",
+      "display_id": "SYSU-1",
+      "display_name": "devrev-bot",
+      "full_name": "DevRev Bot",
+      "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:sysu/1",
+      "state": "active"
+    },
+    "modified_date": "2024-12-03T15:16:29.461Z",
+    "rev_org": {
+      "type": "rev_org",
+      "display_id": "REV-15708Y21",
+      "display_name": "Velocity Global - Internal",
+      "id": "don:identity:dvrv-us-1:devo/ye4F1cYu:revo/15708Y21"
+    },
+    "state": "active",
+    "stock_schema_fragment": "don:core:dvrv-us-1:stock_sf/1334954",
+    "tags": [
+      {
+        "tag": {
+          "display_id": "TAG-10502",
+          "id": "don:core:dvrv-us-1:devo/ye4F1cYu:tag/10502",
+          "name": "people_db_internal_contact"
+        }
+      },
+      {
+        "tag": {
+          "display_id": "TAG-10602",
+          "id": "don:core:dvrv-us-1:devo/ye4F1cYu:tag/10602",
+          "name": "no-account"
+        }
+      },
+      {
+        "tag": {
+          "display_id": "TAG-10604",
+          "id": "don:core:dvrv-us-1:devo/ye4F1cYu:tag/10604",
+          "name": "dupe_un_merged"
+        }
+      }
+    ]
+  }
+}
